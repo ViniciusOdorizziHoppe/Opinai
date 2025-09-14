@@ -1,13 +1,11 @@
 import os
-from PIL import Image
 import torch
-import torchvision.transforms as transforms
 import torchvision.models as models
-from torchvision.transforms.functional import to_tensor
+import torchvision.transforms as transforms
+from PIL import Image
 import numpy as np
 
-# --- Modelo para extrair features ---
-print("Carregando modelo ResNet50 pré-treinado...")
+# --- Modelo pré-treinado ---
 model = models.resnet50(weights=models.ResNet50_Weights.DEFAULT)
 model.eval()  # modo avaliação
 
@@ -21,18 +19,33 @@ preprocess = transforms.Compose([
     )
 ])
 
-
 # --- Função para extrair features ---
 def extrair_features(caminho_imagem):
     image = Image.open(caminho_imagem).convert("RGB")
-    tensor = preprocess(image).unsqueeze(0)  # batch de 1
+    tensor = preprocess(image).unsqueeze(0)
     with torch.no_grad():
         features = model(tensor)
     return features.squeeze().numpy()
 
+# --- Função para classificar ---
+def classificar_imagem(caminho_imagem, features_treino, threshold=0.6):
+    feat = extrair_features(caminho_imagem)
+    melhor_topico = None
+    melhor_similaridade = -1
 
-# --- Tópicos e imagens de treinamento ---
-# Coloque aqui pastas de exemplo com imagens para treinar cada tópico
+    for topico, feats in features_treino.items():
+        for f in feats:
+            sim = np.dot(feat, f) / (np.linalg.norm(feat) * np.linalg.norm(f))
+            if sim > melhor_similaridade:
+                melhor_similaridade = sim
+                melhor_topico = topico
+
+    if melhor_similaridade >= threshold:
+        return melhor_topico  # aprovado
+    return None  # não aprovado
+
+# --- Preparar banco de imagens de referência ---
+# Coloque aqui os caminhos das imagens de treino para cada categoria
 treinamento = {
     "lixo": [
         "IA Assets/lixo/16_brasil_gera_82milhoes_de_toneladas_de_lixo_recicla_apenas_2_porcento_padrao.jpg",
@@ -60,44 +73,23 @@ treinamento = {
     ]
 }
 
-# Extrair features das imagens de treino
-print("Processando imagens de treino...")
 features_treino = {}
 for topico, imagens in treinamento.items():
     features_treino[topico] = [extrair_features(img) for img in imagens]
 
+# --- Função para processar múltiplas imagens de clientes ---
+def processar_imagens(pasta_imagens):
+    aprovadas = []
+    imagens = [f for f in os.listdir(pasta_imagens) if f.lower().endswith((".jpg", ".jpeg", ".png"))]
+    for img in imagens:
+        caminho = os.path.join(pasta_imagens, img)
+        resultado = classificar_imagem(caminho, features_treino)
+        if resultado:
+            aprovadas.append((img, resultado))  # pronto para enviar ao banco
+    return aprovadas
 
-# --- Função para classificar nova imagem ---
-def classificar_imagem(caminho_imagem):
-    feat = extrair_features(caminho_imagem)
-    melhor_topico = None
-    melhor_similaridade = -1
-
-    for topico, feats in features_treino.items():
-        for f in feats:
-            # Similaridade por cosseno
-            sim = np.dot(feat, f) / (np.linalg.norm(feat) * np.linalg.norm(f))
-            if sim > melhor_similaridade:
-                melhor_similaridade = sim
-                melhor_topico = topico
-
-    if melhor_similaridade < 0.6:
-        return f"POSSÍVEL RELEVANTE (similaridade {melhor_similaridade:.2f})"
-    else:
-        return f"ACEITA ({melhor_topico}) - similaridade {melhor_similaridade:.2f}"
-
-
-# --- Teste ---
+# --- Exemplo de uso ---
 if __name__ == "__main__":
-    caminho = input("Digite o caminho da imagem ou pasta: ")
-
-    if os.path.isfile(caminho):
-        print(f"{os.path.basename(caminho)} → {classificar_imagem(caminho)}")
-    elif os.path.isdir(caminho):
-        imagens = [f for f in os.listdir(caminho) if f.lower().endswith((".png", ".jpg", ".jpeg"))]
-        for img in imagens:
-            caminho_imagem = os.path.join(caminho, img)
-            print(f"{img} → {classificar_imagem(caminho_imagem)}")
-    else:
-        print("Caminho inválido.")
-
+    pasta_cliente = "caminho/para/imagens_enviadas"
+    aprovadas = processar_imagens(pasta_cliente)
+    # Aqui você poderia enviar 'aprovadas' diretamente para o banco de dados
