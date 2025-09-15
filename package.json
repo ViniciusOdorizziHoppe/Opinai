@@ -3,5 +3,25 @@
     "express": "^5.1.0",
     "mysql2": "^3.14.5",
     "path": "^0.12.7"
-  }
+  },
+  "name": "opinai",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ViniciusOdorizziHoppe/Opinai.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ViniciusOdorizziHoppe/Opinai/issues"
+  },
+  "homepage": "https://github.com/ViniciusOdorizziHoppe/Opinai#readme"
 }
