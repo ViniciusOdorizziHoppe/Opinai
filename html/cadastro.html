@@ -1,21 +1,40 @@
 <!DOCTYPE html>
-<html lang="pt-Br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadrasto Opinaí</title>
-</head>
-<body>
-    <form action="/cadastro" method="POST">
-    <h1>Opinaí</h1>
-    <p>Faça Seu Cadastro!</p>
-    <input type="text" placeholder="Insira Seu Nome" name="nome" id="nome" required>
-    <br>
-    <input type="email" placeholder="Insira Seu Email" name="email" id="email"  required>
-    <br>
-    <button type="submit" onclick="validar()">Cadastrar</button>
-    </form>    
+<html lang="pt-BR">
 
-    <script src="/script.js"></script>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro Opinaí</title>
+  <link rel="stylesheet" href="../css/cadastro.css">
+</head>
+
+<body>
+  <header class="header">
+    <img src="../assets/OpinaiLogo.png" alt="Logo Opinaí">
+    <div>
+      <h1>Opinaí</h1>
+      <h2>Comunidade mais próxima de você</h2>
+    </div>
+  </header>  
+  <form action="/cadastro" method="POST">
+    <div class="form-content">
+      <p>Faça seu cadastro!</p>
+
+      <div>
+        <label for="nome">Nome completo:</label>
+        <input type="text" name="nome" id="nome" placeholder="John Doe" required>
+      </div>
+
+      <div>
+        <label for="email">Email próprio:</label>
+        <input type="email" name="email" id="email" placeholder="JohnDoe2009@gmail.com" required>
+      </div>
+
+    </div>
+
+    <button type="submit" onclick="validar()">Cadastrar</button>
+  </form>  
+
+  <script src="/script.js"></script>
 </body>
 </html>

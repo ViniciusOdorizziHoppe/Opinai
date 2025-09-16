@@ -1,0 +1,138 @@
+/* Reset básico */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+}
+
+/* Header (logo + título + subtítulo) no canto superior esquerdo */
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 20px 0 0 20px;
+    gap: 15px;
+}
+
+/* Logo */
+.header img {
+    width: 45px;
+    height: auto;
+    border-radius: 20%;
+}
+
+/* Título com gradiente */
+.header h1 {
+    font-size: 2rem;
+    margin: 0;
+    font-family: 'Arial Black', Arial, sans-serif;
+    background: linear-gradient(135deg, #26cc63, #2ab4da, #28c09e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+/* Subtítulo simples abaixo do título */
+.header h2 {
+    font-size: 1rem;
+    margin: 0;
+    color: #333;
+    font-family: Arial, sans-serif;
+}
+
+/* Caixa do formulário */
+form {
+    width: 320px;
+    min-height: 320px;
+    margin: 60px auto 30px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+/* Container interno para inputs e título */
+.form-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Título dentro do formulário (centralizado, fonte Opinaí, preto) */
+form p {
+    font-family: 'Arial Black', Arial, sans-serif;
+    font-size: 1.2rem;
+    margin: 0 0 10px 0;
+    text-align: center;
+    color: #000;
+}
+
+/* Rótulos acima dos inputs */
+form label {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 0.9rem;
+    margin-bottom: 3px;
+}
+
+/* Inputs */
+form input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #aaa;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    color: #999;
+    transition: all 0.5s ease;
+}
+
+/* Placeholder */
+form input::placeholder {
+    color: #ccc;
+}
+
+/* Ao focar */
+form input:focus {
+    color: #000;
+    outline: none;
+    border-radius: 5px;
+    border-image: linear-gradient(135deg, #26cc63, #2ab4da, #28c09e) 1;
+    border-width: 2px;
+    border-style: solid;
+    animation: border-rotate 1.5s linear infinite;
+}
+
+/* Animação da borda gradiente */
+@keyframes border-rotate {
+    0% { border-image: linear-gradient(135deg, #26cc63, #2ab4da, #28c09e) 1; }
+    50% { border-image: linear-gradient(225deg, #26cc63, #2ab4da, #28c09e) 1; }
+    100% { border-image: linear-gradient(405deg, #26cc63, #2ab4da, #28c09e) 1; }
+}
+
+/* Botão com gradiente diagonal */
+form button {
+    padding: 10px 0;
+    border: none;
+    background: linear-gradient(135deg, #26cc63, #2ab4da, #28c09e);
+    background-size: 300% 300%;
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-position 1s ease;
+    width: 100%;
+    align-self: center;
+    margin-top: 10px;
+}
+
+/* Animação do hover (volta ao redor) */
+form button:hover {
+    background-position: 100% 0;
+}
