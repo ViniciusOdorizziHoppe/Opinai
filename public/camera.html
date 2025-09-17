@@ -16,8 +16,12 @@
 
     <script>
 
-        c
+        const video = document.getElementById("video")
+        const btnFoto = document.getElementById("btnFoto")
+        const preview = document.getElementById("preview")
+        const canvas = document.getElementById("canvas")
 
+    
         async function startCamera() {
             try {
                 const stream = await navigator.mediaDevices.getUserMedia({video: true})
@@ -27,6 +31,27 @@
                 console.log(err)
             }
         }
+
+
+        btnFoto.addEventListener("click", async () => {
+            const ctx = canvas.getContext("2d")
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height)
+
+            const dataUrl = canvas.toDataURL("image/png")
+
+            preview.innerHTML = `<img src="${dataUrl}" width="340">`
+
+
+            fetch("/uploads", {
+                method: "POST",
+                headers: {"Content-Type" : "application/json"}, 
+                 body: JSON.stringify({ image: dataUrl })
+            })
+            .then(res => res.text())
+            .then(msg => console.log(msg))
+            .catch(err => console.error("Erro:", err))
+        })
+        
         
 
         startCamera()
