@@ -1,12 +1,12 @@
 function validar() {
-    event.preventDefault()
-    var senha = document.getElementById("senha").value.trim()
-    var email = document.getElementById("email").value.trim()
+  event.preventDefault()
+  var senha = document.getElementById("senha").value.trim()
+  var email = document.getElementById("email").value.trim()
 
-    if (email === "" || senha === "") {
+  if (email === "" || senha === "") {
     alert("Preencha todos os campos!")
     return false
-  } else  {
+  } else {
     encaminhar()
     return true
   }
@@ -15,49 +15,37 @@ function capturarValores() {
   var denuncia = document.getElementById("denuncia").value.trim()
   var imagem = 0
   if (denuncia == "") {
-  alert("Preencha o campo")
+    alert("Preencha o campo")
   } else {
-    
+
   }
 }
+
+// Redirecionamento genérico
 function encaminhar() {
   window.location.href = "inicio.html"
 }
 
+// SIDEBAR TOGGLE
 document.addEventListener("DOMContentLoaded", () => {
-
-  // Sidebar toggle
   const sidebar = document.getElementById('sidebar');
   const closeBtn = document.getElementById('closeBtn');
   const openBtn = document.getElementById('openBtn');
+  const mainSection = document.getElementById('mainSection');
 
-  if(sidebar && closeBtn && openBtn){
+  if (sidebar && closeBtn && openBtn) {
+    // Fecha a sidebar
     closeBtn.addEventListener('click', () => {
       sidebar.classList.add('closed');
+      mainSection.classList.add('expanded');
       setTimeout(() => openBtn.classList.add('visible'), 300);
     });
+
+    // Abre a sidebar
     openBtn.addEventListener('click', () => {
       sidebar.classList.remove('closed');
+      mainSection.classList.remove('expanded');
       openBtn.classList.remove('visible');
     });
   }
-
-  // Accordion
-  const accordions = document.querySelectorAll('.accordion-btn');
-  accordions.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const content = btn.nextElementSibling;
-      if(content.style.maxHeight){
-        content.style.maxHeight = null;
-      } else {
-        accordions.forEach(otherBtn => {
-          if(otherBtn !== btn){
-            otherBtn.nextElementSibling.style.maxHeight = null;
-          }
-        });
-        content.style.maxHeight = content.scrollHeight + "px";
-      }
-    });
-  });
-
 });

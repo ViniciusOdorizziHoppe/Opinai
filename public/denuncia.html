@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opinaí - Denúncia</title>
+    <link rel="stylesheet" href="./css/denuncia.css">
+</head>
+
+<body>
+    <!-- Barra Lateral -->
+    <div class="sidebar" id="sidebar">
+        <button class="close-btn" id="closeBtn">✖</button>
+        <nav>
+            <ul>
+                <li><a href="inicio.html">Página Inicial</a></li>
+                <li><a href="#">Ver Denúncias</a></li>
+                <li><a href="denuncia.html">Fazer Denúncia</a></li>
+                <li><a href="ajuda.html">Suporte / Ajuda</a></li>
+            </ul>
+        </nav>
+    </div>
+    <button class="open-btn" id="openBtn">☰</button>
+
+    <!-- Header -->
+    <header class="header">
+        <img src="./assets/OpinaiLogo.png" alt="Logo Opinai">
+        <div class="header-text">
+            <h1>Denuncia</h1>
+            <h2>Envie sua denúncia de forma segura</h2>
+        </div>
+    </header>
+
+    <!-- Conteúdo principal -->
+    <div class="container" id="mainSection">
+        <!-- Botão para abrir a câmera -->
+        <button id="btnAbrir" class="page-button">Abrir Câmera</button>
+
+        <!-- Vídeo da câmera -->
+        <video id="video" autoplay playsinline style="display:none"></video>
+
+        <!-- Botão para tirar foto -->
+        <button id="btnFoto" class="page-button" style="display:none">Tirar Foto</button>
+
+        <!-- Preview da foto -->
+        <div id="preview"></div>
+
+        <!-- Formulário -->
+        <form class="form-content">
+            <label for="tituloDenuncia">Título:</label>
+            <input type="text" placeholder="Buraco na Estrada" id="tituloDenuncia">
+
+            <label for="denuncia">Descreva a Sua Denúncia:</label>
+            <textarea id="denuncia" placeholder="Tente ser breve!"></textarea>
+        </form>
+
+        <!-- Canvas escondido -->
+        <canvas id="canvas" style="display:none"></canvas>
+    </div>
+
+    <!-- SCRIPT DA CÂMERA INLINE -->
+    <script>
+        const video = document.getElementById("video");
+        const btnAbrir = document.getElementById("btnAbrir");
+        const btnFoto = document.getElementById("btnFoto");
+        const preview = document.getElementById("preview");
+        const canvas = document.getElementById("canvas");
+        let stream = null;
+
+        async function startCamera() {
+            try {
+                stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                video.srcObject = stream;
+                video.style.display = "block";
+                btnFoto.style.display = "inline-block";
+                btnAbrir.style.display = "none";
+                preview.innerHTML = "";
+            } catch (err) {
+                alert("Erro ao acessar a câmera: " + err.message);
+                console.error(err);
+            }
+        }
+
+        function stopCamera() {
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+                stream = null;
+            }
+            video.srcObject = null;
+            video.style.display = "none";
+            btnFoto.style.display = "none";
+            btnAbrir.style.display = "inline-block";
+        }
+
+        btnAbrir.addEventListener("click", startCamera);
+
+        btnFoto.addEventListener("click", () => {
+            const ctx = canvas.getContext("2d");
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            const dataUrl = canvas.toDataURL("image/png");
+            preview.innerHTML = `<div class="photo-frame"><img src="${dataUrl}" alt="Preview da foto"></div>`;
+            stopCamera();
+            btnAbrir.textContent = "Tirar novamente?";
+        });
+    </script>
+
+    <!-- JS da Sidebar -->
+    <script src="./script.js"></script>
+</body>
+
+</html>
