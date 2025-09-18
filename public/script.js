@@ -45,8 +45,11 @@ function criarDenuncia() {
   localStorage.setItem("denuncias", JSON.stringify(denuncias));
 
   alert("Denúncia registrada!");
+  encaminhar2()
 }
-
+function encaminhar2() {
+  window.location.href = "inicio.html"
+}
 // Função para exibir todas as denúncias em uma página
 function mostrarDenuncias() {
   let container = document.getElementById("listaDenuncias");
