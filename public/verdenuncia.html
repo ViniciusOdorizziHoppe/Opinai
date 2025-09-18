@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/verdenuncia.css">
+    <link rel="icon" href="../public/assets/iconOpinai.png" type="image/png">
+    <title>Opinaí - Denuncias</title>
+</head>
+
+<body>
+    <!-- Barra Lateral -->
+    <div class="sidebar" id="sidebar">
+        <button class="close-btn" id="closeBtn">✖</button>
+        <nav>
+            <ul>
+                <li><a href="inicio.html">Página Inicial</a></li>
+                <li><a href="verdenuncia.html">Ver Denúncias</a></li>
+                <li><a href="denuncia.html">Fazer Denúncia</a></li>
+                <li><a href="ajuda.html">Suporte / Ajuda</a></li>
+            </ul>
+        </nav>
+    </div>
+    <button class="open-btn" id="openBtn">☰</button>
+
+    <!-- Header -->
+    <header class="header">
+        <img src="./assets/OpinaiLogo.png" alt="Logo Opinai">
+        <div class="header-text">
+            <h1>Denúncias</h1>
+            <h2>Ver as denúncias já publicadas</h2>
+        </div>
+    </header>
+
+    <!-- Área das denúncias -->
+    <div id="listaDenuncias" class="feed"></div>
+
+    <script>
+        // Recupera denúncias do localStorage
+        const denuncias = JSON.parse(localStorage.getItem("denuncias")) || [];
+
+        function mostrarDenuncias() {
+            const container = document.getElementById("listaDenuncias");
+            if (!container) return;
+
+            container.innerHTML = "";
+            denuncias.forEach((d, index) => {
+                container.innerHTML += `
+          <div class="denuncia closed">
+            <div class="denuncia-title">${d.titulo}</div>
+            <div class="denuncia-content">
+              <p>${d.descricao}</p>
+              <img src="${d.imagem}" alt="Imagem da denúncia">
+            </div>
+          </div>
+        `;
+            });
+
+            // Adiciona evento de abrir/fechar na box inteira
+            const boxes = document.querySelectorAll(".denuncia");
+            boxes.forEach(box => {
+                const content = box.querySelector(".denuncia-content");
+                box.addEventListener("click", () => {
+                    if (box.classList.contains("closed")) {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                        box.classList.remove("closed");
+                    } else {
+                        content.style.maxHeight = null;
+                        box.classList.add("closed");
+                    }
+                });
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", mostrarDenuncias);
+
+        // SIDEBAR TOGGLE
+        document.addEventListener("DOMContentLoaded", () => {
+            const sidebar = document.getElementById('sidebar');
+            const closeBtn = document.getElementById('closeBtn');
+            const openBtn = document.getElementById('openBtn');
+
+            if (sidebar && closeBtn && openBtn) {
+                closeBtn.addEventListener('click', () => {
+                    sidebar.classList.add('closed');
+                    setTimeout(() => openBtn.classList.add('visible'), 300);
+                });
+
+                openBtn.addEventListener('click', () => {
+                    sidebar.classList.remove('closed');
+                    openBtn.classList.remove('visible');
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

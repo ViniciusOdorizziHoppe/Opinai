@@ -1,16 +1,11 @@
-/* Background com imagem */
+/* Body e fundo */
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background: url('../assets/BackgroundCadastro.png') no-repeat center center fixed;
+    background: url("../assets/BackgroundCadastro.png") no-repeat center center fixed;
     background-size: cover;
     color: #2c3e50;
-}
-
-body::-webkit-scrollbar {
-  display: none;
-  /* Chrome, Edge, Safari */
 }
 
 /* Header */
@@ -20,9 +15,10 @@ body::-webkit-scrollbar {
     justify-content: center;
     gap: 15px;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.9);
+    background: #ffffffcc;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     position: relative;
+    border-radius: 12px;
 }
 
 .header img {
@@ -157,112 +153,72 @@ body::-webkit-scrollbar {
     transform: translateX(-100%);
 }
 
-/* Container central */
-.container {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    max-width: 600px;
-    margin: 20px auto;
+/* Feed de denúncias */
+#listaDenuncias {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    padding: 20px;
+    margin-left: 160px;
 }
 
-/* Botões de ação */
-.page-button {
-    padding: 10px 0;
-    max-width: 180px;
-    border: none;
-    background: linear-gradient(135deg, #26cc63, #2ab4da, #28c09e);
-    background-size: 300% 300%;
-    color: #fff;
-    font-size: 1rem;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-position 1s ease;
-    width: 100%;
-    align-self: center;
-    margin-top: 10px;
-}
-
-.page-button:hover {
-    background-position: 100% 0;
-}
-
-/* Inputs */
-.container label {
-    font-weight: bold;
-    margin-bottom: 3px;
-    display: block;
-}
-
-form {
+/* Cada box de denúncia */
+.denuncia {
+    background: #fff;
+    min-width: 450px;
+    max-width: 600px;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin: auto;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 10px;
+    cursor: pointer;
 }
 
-input,
-textarea {
-    width: 100%;
-    padding: 12px;
-    font-size: 1rem;
-    border: 2px solid #aaa;
-    border-radius: 10px;
-    box-sizing: border-box;
-    color: #999;
-    transition: all 0.5s ease;
+body::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Edge, Safari */
 }
 
-input::placeholder,
-textarea::placeholder {
-    color: #ccc;
+/* Título da denúncia */
+.denuncia-title {
+    font-size: 1.5rem;
+    margin: 0;
+    font-family: 'Arial Black', Arial, sans-serif;
+    background: #333;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
 }
 
-input:focus,
-textarea:focus {
-    color: #000;
-    outline: none;
-    border-image: linear-gradient(135deg, #26cc63, #2ab4da, #28c09e) 1;
-    border-width: 2px;
-    border-style: solid;
-    animation: border-rotate 1.5s linear infinite;
+/* Conteúdo inicial escondido */
+.denuncia-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 5px;
 }
 
-@keyframes border-rotate {
-    0% {
-        border-image: linear-gradient(135deg, #26cc63, #2ab4da, #28c09e) 1;
-    }
-
-    50% {
-        border-image: linear-gradient(225deg, #26cc63, #2ab4da, #28c09e) 1;
-    }
-
-    100% {
-        border-image: linear-gradient(405deg, #26cc63, #2ab4da, #28c09e) 1;
-    }
+/* Descrição da denúncia */
+.denuncia-content p {
+    font-size: 16px;
+    color: #555;
+    margin: 0;
+    line-height: 1.5;
+    background-color: #e3e3e3;
+    padding: 5px;
+    border-radius: 8px;
 }
 
-textarea {
-    min-height: 80px;
-}
-
-/* Video da câmera */
-#video {
-    width: 100%;
-    border-radius: 20px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
-    margin-top: 10px;
-    object-fit: cover;
-    /* mantém proporção e preenche o container */
-}
-
-/* Preview da foto */
-#preview img {
-    width: 100%;
-    border-radius: 20px;
-    margin-top: 10px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+/* Imagem da denúncia */
+.denuncia-content img {
+    max-width: 200px;
+    height: auto;
+    border-radius: 8px;
+    margin: 7px auto 0 auto;
 }

@@ -7,6 +7,11 @@ body {
     background-size: cover;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Edge, Safari */
+}
+
 /* Header */
 .header {
     display: flex;

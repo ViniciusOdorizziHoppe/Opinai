@@ -47,9 +47,11 @@ function criarDenuncia() {
   alert("Denúncia registrada!");
   encaminhar2()
 }
+
 function encaminhar2() {
   window.location.href = "inicio.html"
 }
+
 // Função para exibir todas as denúncias em uma página
 function mostrarDenuncias() {
   let container = document.getElementById("listaDenuncias");
@@ -58,21 +60,24 @@ function mostrarDenuncias() {
   container.innerHTML = "";
   denuncias.forEach(d => {
     container.innerHTML += `
-      <div class="denuncia">
-        <h3>${d.titulo}</h3>
-        <img src="${d.imagem}" alt="Imagem da denúncia" width="200">
-        <p>${d.descricao}</p>
-      </div>
-    `;
+  <div class="denuncia">
+    <h2>${d.titulo}</h2>
+    <p>${d.descricao}</p>
+    <img src="${d.imagem}" alt="Imagem da denúncia">
+  </div>
+`;
+
   });
 }
 
 // Chama automaticamente quando entrar na página de ver denúncias
 document.addEventListener("DOMContentLoaded", mostrarDenuncias);
+
 // Redirecionamento genérico
 function encaminhar() {
   window.location.href = "inicio.html"
 }
+
 
 // SIDEBAR TOGGLE
 document.addEventListener("DOMContentLoaded", () => {

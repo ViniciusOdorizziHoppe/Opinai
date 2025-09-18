@@ -7,6 +7,11 @@ body {
   color: #2c3e50;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Edge, Safari */
+}
+
 /* Header */
 .header {
   display: flex;
