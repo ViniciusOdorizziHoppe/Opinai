@@ -26,41 +26,46 @@ async function salvarTodo(email, senha) {
   }
 }
 
-let denuncias = []
-let titulo = document.getElementById("tituloDenuncia").value.trim()
-let descricao = document.getElementById("denuncia").value.trim()
-
+let denuncias = JSON.parse(localStorage.getItem("denuncias")) || [];
 
 // Função para criar e salvar uma denúncia
-function criarDenuncia(titulo, descricao) {
-  const denuncia = {
-    titulo: titulo,
-    descricao: descricao,
-    mostrar: function() {
-      return `
-        <div class="denuncia">
-          <h3>${this.titulo}</h3>
-          <img src="${this.imagem}" alt="Imagem da denúncia" width="200">
-          <p>${this.descricao}</p>
-        </div>
-      `;
-    }
-  };
+function criarDenuncia() {
+  let titulo = document.getElementById("tituloDenuncia").value.trim();
+  let descricao = document.getElementById("denuncia").value.trim();
+  let imagem = document.getElementById("preview").querySelector("img")?.src || "";
+
+  if (!titulo || !descricao) {
+    alert("Preencha todos os campos!");
+    return;
+  }
+
+  const denuncia = { titulo, descricao, imagem };
 
   denuncias.push(denuncia);
-  return denuncia;
+  localStorage.setItem("denuncias", JSON.stringify(denuncias));
+
+  alert("Denúncia registrada!");
 }
 
 // Função para exibir todas as denúncias em uma página
 function mostrarDenuncias() {
   let container = document.getElementById("listaDenuncias");
-  container.innerHTML = ""; // limpa antes de renderizar
+  if (!container) return;
 
+  container.innerHTML = "";
   denuncias.forEach(d => {
-    container.innerHTML += d.mostrar();
+    container.innerHTML += `
+      <div class="denuncia">
+        <h3>${d.titulo}</h3>
+        <img src="${d.imagem}" alt="Imagem da denúncia" width="200">
+        <p>${d.descricao}</p>
+      </div>
+    `;
   });
 }
 
+// Chama automaticamente quando entrar na página de ver denúncias
+document.addEventListener("DOMContentLoaded", mostrarDenuncias);
 // Redirecionamento genérico
 function encaminhar() {
   window.location.href = "inicio.html"
