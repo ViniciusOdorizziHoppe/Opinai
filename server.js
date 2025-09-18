@@ -25,12 +25,15 @@ app.get("/cadastro", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "cadastro.html"));
 });
 app.post('/cadastro', (req,res) => {
-    res.sendFile(path.join(__dirname, "public", "cadastro.html"))
     const {email , senha} = req.body
     console.log(`Email: ${email} Senha: ${senha}`)
+    res.json({ success: true, message: "Cadastro realizado com sucesso!" });
 })
-app.get("/camera", (req,res) => {
-    res.sendFile(path.join(__dirname, "public", "camera.html"))
+app.get("/inicio", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "inicio.html"));
+});
+app.get("/denuncia", (req,res) => {
+    res.sendFile(path.join(__dirname, "public", "denuncia.html"))
 })
 
 

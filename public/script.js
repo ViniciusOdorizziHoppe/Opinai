@@ -1,24 +1,64 @@
-function validar() {
-  event.preventDefault()
-  var senha = document.getElementById("senha").value.trim()
-  var email = document.getElementById("email").value.trim()
+async function salvarTodo(email, senha) {
+  try {
+    const response = await fetch('http://localhost:2409/cadastro', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+      body: JSON.stringify({
+        senha: senha,
+        email: email
+      })
+    });
 
-  if (email === "" || senha === "") {
-    alert("Preencha todos os campos!")
-    return false
-  } else {
-    encaminhar()
-    return true
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log("Data fetched:", data);
+
+    encaminhar();
+
+  } catch (error) {
+    console.error("Fetch error:", error);
+    alert("Erro ao salvar, tente novamente!");
   }
 }
-function capturarValores() {
-  var denuncia = document.getElementById("denuncia").value.trim()
-  var imagem = 0
-  if (denuncia == "") {
-    alert("Preencha o campo")
-  } else {
 
-  }
+let denuncias = []
+let titulo = document.getElementById("tituloDenuncia").value.trim()
+let descricao = document.getElementById("denuncia").value.trim()
+
+
+// Função para criar e salvar uma denúncia
+function criarDenuncia(titulo, descricao) {
+  const denuncia = {
+    titulo: titulo,
+    descricao: descricao,
+    mostrar: function() {
+      return `
+        <div class="denuncia">
+          <h3>${this.titulo}</h3>
+          <img src="${this.imagem}" alt="Imagem da denúncia" width="200">
+          <p>${this.descricao}</p>
+        </div>
+      `;
+    }
+  };
+
+  denuncias.push(denuncia);
+  return denuncia;
+}
+
+// Função para exibir todas as denúncias em uma página
+function mostrarDenuncias() {
+  let container = document.getElementById("listaDenuncias");
+  container.innerHTML = ""; // limpa antes de renderizar
+
+  denuncias.forEach(d => {
+    container.innerHTML += d.mostrar();
+  });
 }
 
 // Redirecionamento genérico
