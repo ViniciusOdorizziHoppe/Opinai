@@ -1,0 +1,162 @@
+/* Reset básico */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: url("../assets/BackgroundCadastro.png") no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Header */
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 20px 0 0 20px;
+    gap: 15px;
+}
+
+.header img {
+    width: 45px;
+    height: auto;
+    border-radius: 20%;
+}
+
+.header h1 {
+    font-size: 2rem;
+    margin: 0;
+    font-family: 'Arial Black', Arial, sans-serif;
+    background: linear-gradient(135deg, #26cc63, #2ab4da, #28c09e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.header h2 {
+    font-size: 1rem;
+    margin: 0;
+    color: #333;
+    font-family: Arial, sans-serif;
+}
+
+/* Wrapper para o form e botão de ajuda */
+.form-wrapper {
+    width: 320px;
+    margin: 60px auto 30px auto;
+}
+
+/* Formulário */
+form {
+    width: 100%;
+    min-height: 320px;
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+/* Conteúdo do form */
+.form-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form p {
+    font-family: 'Arial Black', Arial, sans-serif;
+    font-size: 1.2rem;
+    margin: 0 0 10px 0;
+    text-align: center;
+    color: #000;
+}
+
+form label {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 0.9rem;
+    margin-bottom: 3px;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #aaa;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    color: #999;
+    transition: all 0.5s ease;
+}
+
+form input::placeholder {
+    color: #ccc;
+}
+
+form input:focus {
+    color: #000;
+    outline: none;
+    border-radius: 5px;
+    border-image: linear-gradient(135deg, #26cc63, #2ab4da, #28c09e) 1;
+    border-width: 2px;
+    border-style: solid;
+    animation: border-rotate 1.5s linear infinite;
+}
+
+@keyframes border-rotate {
+    0% {
+        border-image: linear-gradient(135deg, #26cc63, #2ab4da, #28c09e) 1;
+    }
+
+    50% {
+        border-image: linear-gradient(225deg, #26cc63, #2ab4da, #28c09e) 1;
+    }
+
+    100% {
+        border-image: linear-gradient(405deg, #26cc63, #2ab4da, #28c09e) 1;
+    }
+}
+
+form button {
+    padding: 10px 0;
+    border: none;
+    background: linear-gradient(135deg, #26cc63, #2ab4da, #28c09e);
+    background-size: 300% 300%;
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-position 1s ease;
+    width: 100%;
+    align-self: center;
+    margin-top: 10px;
+}
+
+form button:hover {
+    background-position: 100% 0;
+}
+
+/* Botão de ajuda */
+.help-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+    padding: 12px 0;
+    background: rgba(40, 192, 158, 0.85);
+    color: #fff;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s, transform 0.2s;
+}
+
+.help-btn:hover {
+    background: rgba(40, 192, 158, 1);
+    transform: scale(1.05);
+}

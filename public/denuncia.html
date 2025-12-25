@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Opinaí - Denúncia</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <link rel="stylesheet" href="./css/denuncia.css">
+</head>
+<body>
+
+  <!-- ETAPA 1: MAPA -->
+  <div id="telaMapa">
+    <h2>Onde denunciar?</h2>
+    <div id="map"></div>
+    <button id="btnIrDenuncia" class="page-button">
+      Denunciar neste local
+    </button>
+  </div>
+<!-- ETAPA 2: FORMULÁRIO -->
+<div id="telaDenuncia" style="display:none;">
+  <h2>Fazer Denúncia</h2>
+
+  <!-- BOTÕES E VÍDEO DA CÂMERA -->
+  <button id="btnAbrir" class="page-button">Abrir Câmera</button>
+  <video id="video" autoplay playsinline style="display:none"></video>
+  <button id="btnFoto" class="page-button" style="display:none">Tirar Foto</button>
+
+  <!-- PREVIEW DA FOTO -->
+  <div id="preview"></div>
+
+  <form class="form-content">
+    <label for="tituloDenuncia">Título:</label>
+    <input type="text" id="tituloDenuncia" placeholder="Buraco na estrada">
+
+    <label for="denuncia">Descreva a denúncia:</label>
+    <textarea id="denuncia" placeholder="Explique o problema"></textarea>
+  </form>
+
+  <button type="button" onclick="criarDenuncia()" class="page-button">
+    Confirmar Denúncia!
+  </button>
+</div>
+
+  <!-- Leaflet -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <!-- JS do mapa -->
+  <script src="/js/mapa.js"></script>
+
+  <!-- JS da lógica de telas -->
+  <script>
+    const telaMapa = document.getElementById('telaMapa');
+    const telaDenuncia = document.getElementById('telaDenuncia');
+    const btnIrDenuncia = document.getElementById('btnIrDenuncia');
+
+    btnIrDenuncia.addEventListener('click', () => {
+      if (!window.localSelecionado) {
+        alert('Clique no mapa para escolher o local da denúncia!');
+        return;
+      }
+
+      telaMapa.style.display = 'none';
+      telaDenuncia.style.display = 'block';
+    });
+  </script>
+  <script src="script.js"></script>
+
+</body>
+</html>

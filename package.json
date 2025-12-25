@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "express": "^5.1.0",
+    "fs": "^0.0.1-security",
+    "mysql2": "^3.14.5",
+    "path": "^0.12.7"
+  },
+  "name": "opinai",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ViniciusOdorizziHoppe/Opinai.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ViniciusOdorizziHoppe/Opinai/issues"
+  },
+  "homepage": "https://github.com/ViniciusOdorizziHoppe/Opinai#readme"
+}
