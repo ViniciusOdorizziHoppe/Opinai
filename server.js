@@ -69,3 +69,14 @@ app.post("/uploads", (req, res) => {
 app.listen(porta, () => {
   console.log(`Servidor rodando na porta ${porta}`);
 });
+app.use((req, res, next) => {
+  res.setHeader(
+    "Content-Security-Policy",
+    "default-src 'self'; " +
+    "img-src 'self' data:; " +
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
+    "script-src 'self' 'unsafe-inline'; " +
+    "font-src 'self' https://fonts.gstatic.com;"
+  );
+  next();
+});
