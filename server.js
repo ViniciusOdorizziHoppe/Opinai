@@ -24,15 +24,15 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // 👉 rotas das páginas
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "cadastro.html"));
+  res.sendFile(path.join(__dirname, "public", "html", "cadastro.html"));
 });
 
 app.get("/inicio", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "inicio.html"));
+  res.sendFile(path.join(__dirname, "public", "html", "inicio.html"));
 });
 
 app.get("/denuncia", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "denuncia.html"));
+  res.sendFile(path.join(__dirname, "public", "html", "denuncia.html"));
 });
 
 // 👉 API de cadastro
