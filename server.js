@@ -27,16 +27,16 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "html", "cadastro.html"));
 });
 
-app.get("/inicio", (req, res) => {
+app.get("/html/inicio", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "html", "inicio.html"));
 });
 
-app.get("/denuncia", (req, res) => {
+app.get("/html/denuncia", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "html", "denuncia.html"));
 });
 
 // 👉 API de cadastro
-app.post("/cadastro", (req, res) => {
+app.post("/html/cadastro", (req, res) => {
   const { email, senha } = req.body;
   console.log(`Cadastro -> Email: ${email} | Senha: ${senha}`);
 

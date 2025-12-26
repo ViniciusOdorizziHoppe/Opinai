@@ -5,7 +5,7 @@ async function salvarTodo(event) {
   const senha = document.getElementById("senha").value;
 
   try {
-    const response = await fetch("/cadastro", {
+    const response = await fetch("/html/cadastro", {
       method: "POST",
       headers: {
         "Content-Type": "application/json; charset=UTF-8",
@@ -55,7 +55,7 @@ function criarDenuncia() {
   encaminhar2();
 }
 function encaminhar2() {
-  window.location.href = "inicio.html";
+  window.location.href = "/html/inicio.html";
 }
 function mostrarDenuncias() {
   let container = document.getElementById("listaDenuncias");
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", mostrarDenuncias);
 
 // redirecionamento genérico
 function encaminhar() {
-  window.location.href = "inicio.html";
+  window.location.href = "/html/inicio.html";
 }
 
 // Sidebar
@@ -131,10 +131,10 @@ async function startCamera() {
   try {
     stream = await navigator.mediaDevices.getUserMedia({ video: true });
     video.srcObject = stream;
-    video.style.display = "block";       // mostra o vídeo
-    btnFoto.style.display = "inline-block"; // mostra botão de tirar foto
-    btnAbrir.style.display = "none";     // esconde botão de abrir câmera
-    preview.innerHTML = "";               // limpa preview anterior
+    video.style.display = "block";
+    btnFoto.style.display = "inline-block";
+    btnAbrir.style.display = "none";
+    preview.innerHTML = "";
   } catch (err) {
     alert("Erro ao acessar a câmera: " + err.message);
   }

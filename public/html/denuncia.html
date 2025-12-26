@@ -11,6 +11,21 @@
 </head>
 
 <body>
+  <!-- Barra Lateral -->
+  <div id="sidebar" class="sidebar closed">
+    <button class="close-btn" id="closeBtn">✖</button>
+    <nav>
+      <ul>
+        <li><a href="../html/inicio.html">Página Inicial</a></li>
+        <li><a href="../html/denuncia.html">Fazer Denúncia</a></li>
+        <li><a href="../html/verdenuncia.html">Ver Denúncias</a></li>
+        <li><a href="../html/ajuda.html">Suporte / Ajuda</a></li>
+      </ul>
+    </nav>
+  </div>
+  <button id="openBtn" class="open-btn visible">☰</button>
+
+  <!-- Header -->
   <header class="header">
     <img src="/assets/opinaiLogo.png" alt="Logo Opinai">
     <div class="header-text">
@@ -25,7 +40,7 @@
 
     <button id="btnAbrirMapa" class="action-button">
       <div class="icon-box">
-        <img src="assets/globo.png" alt="Abrir mapa">
+        <img src="../assets/globo.png" alt="Abrir mapa">
       </div>
       <span>Abrir mapa</span>
     </button>
@@ -45,7 +60,7 @@
 
     <button id="btnAbrirCamera" onclick="startCamera()" class="action-button">
       <div class="icon-box">
-        <img src="./assets/camera.png" alt="Abrir câmera">
+        <img src="../assets/camera.png" alt="Abrir câmera">
       </div>
       <span>Abrir câmera</span>
     </button>
