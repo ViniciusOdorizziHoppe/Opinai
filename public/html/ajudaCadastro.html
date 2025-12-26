@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/ajuda.css">
-    <link rel="icon" href="./assets/iconOpinai.png" type="image/png">
+    <link rel="stylesheet" href="../css/ajuda.css">
+    <link rel="icon" href="../assets/iconOpinai.png" type="image/png">
     <title>Ajuda - Opinai</title>
 </head>
 
@@ -130,20 +130,19 @@
         </div>
     </section>
 
-    <script src="./script.js"></script>
+    <script src="../script.js"></script>
     <script>
         // Accordion toggle
         const accordions = document.querySelectorAll('.accordion-btn');
         accordions.forEach(btn => {
             const content = btn.nextElementSibling;
-            content.style.maxHeight = null; // inicia fechado
+            content.style.maxHeight = null;
             btn.addEventListener('click', () => {
                 if (content.style.maxHeight) {
-                    content.style.maxHeight = null; // fecha
+                    content.style.maxHeight = null;
                 } else {
-                    // fecha todos os outros
                     document.querySelectorAll('.accordion-content').forEach(c => c.style.maxHeight = null);
-                    content.style.maxHeight = content.scrollHeight + "px"; // abre
+                    content.style.maxHeight = content.scrollHeight + "px";
                 }
             });
         });

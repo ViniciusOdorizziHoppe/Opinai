@@ -3,7 +3,7 @@ self.addEventListener('install', event => {
     caches.open('opinai-v1').then(cache => {
       return cache.addAll([
         '/',
-        '/index.html',
+        '/html/index.html',
         '/css/style.css',
         '/js/app.js'
       ]);
