@@ -28,25 +28,20 @@ async function salvarTodo(event) {
   }
 }
 
-// ---------------- DENÚNCIAS ----------------
-
+// Denúncias
 let denuncias = JSON.parse(localStorage.getItem("denuncias")) || [];
-
 function criarDenuncia() {
   let titulo = document.getElementById("tituloDenuncia")?.value.trim();
   let descricao = document.getElementById("denuncia")?.value.trim();
   let imagem = document.getElementById("preview")?.querySelector("img")?.src || "";
-
   if (!titulo || !descricao) {
     alert("Preencha todos os campos!");
     return;
   }
-
   if (!window.localSelecionado) {
     alert("Selecione o local da denúncia no mapa!");
     return;
   }
-
   const denuncia = {
     titulo,
     descricao,
@@ -54,22 +49,17 @@ function criarDenuncia() {
     latitude: window.localSelecionado.lat,
     longitude: window.localSelecionado.lng
   };
-
   denuncias.push(denuncia);
   localStorage.setItem("denuncias", JSON.stringify(denuncias));
-
   alert("Denúncia registrada!");
   encaminhar2();
 }
-
 function encaminhar2() {
   window.location.href = "inicio.html";
 }
-
 function mostrarDenuncias() {
   let container = document.getElementById("listaDenuncias");
   if (!container) return;
-
   container.innerHTML = "";
   denuncias.forEach(d => {
     container.innerHTML += `
@@ -81,7 +71,6 @@ function mostrarDenuncias() {
     `;
   });
 }
-
 document.addEventListener("DOMContentLoaded", mostrarDenuncias);
 
 // redirecionamento genérico
@@ -89,8 +78,7 @@ function encaminhar() {
   window.location.href = "inicio.html";
 }
 
-// ---------------- SIDEBAR ----------------
-
+// Sidebar
 document.addEventListener("DOMContentLoaded", () => {
   const sidebar = document.getElementById("sidebar");
   const closeBtn = document.getElementById("closeBtn");
@@ -101,11 +89,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Fecha a sidebar
     closeBtn.addEventListener("click", () => {
       sidebar.classList.add("closed");
-
       if (mainSection) {
         mainSection.classList.add("expanded");
       }
-
       setTimeout(() => {
         openBtn.classList.add("visible");
       }, 300);
@@ -114,11 +100,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Abre a sidebar
     openBtn.addEventListener("click", () => {
       sidebar.classList.remove("closed");
-
       if (mainSection) {
         mainSection.classList.remove("expanded");
       }
-
       openBtn.classList.remove("visible");
     });
   }
@@ -129,7 +113,6 @@ document.addEventListener("DOMContentLoaded", () => {
       mainSection?.classList.add('expanded');
       setTimeout(() => openBtn.classList.add('visible'), 300);
     });
-
     openBtn.addEventListener('click', () => {
       sidebar.classList.remove('closed');
       mainSection?.classList.remove('expanded');
@@ -137,7 +120,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 // Câmera
-
 const video = document.getElementById("video");
 const btnAbrir = document.getElementById("btnAbrir");
 const btnFoto = document.getElementById("btnFoto");
@@ -185,7 +167,3 @@ if (btnAbrir && btnFoto && video && preview) {
     stopCamera();
   });
 }
-
-/* Tentativa de arrumar logo */
-import path from "path";
-app.use(express.static(path.join(process.cwd(), "public")));
