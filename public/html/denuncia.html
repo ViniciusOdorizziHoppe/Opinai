@@ -73,7 +73,6 @@
     <form class="form-content">
       <label for="tituloDenuncia"><b>Título:</b></label>
       <input type="text" id="tituloDenuncia" placeholder="Buraco na estrada">
-
       <label for="denuncia"><b>Descreva a denúncia:</b></label>
       <textarea type="text" id="denuncia" placeholder="Explique o problema"></textarea>
     </form>
@@ -87,6 +86,17 @@
   <script src="../js/mapa.js"></script>
   <script src="../js/telas.js"></script>
   <script src="../script.js"></script>
+  <!-- Auto ajuste de altura do textarea -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const textarea = document.getElementById("denuncia");
+      textarea.addEventListener("input", () => {
+        textarea.style.height = "auto";
+        textarea.style.height = textarea.scrollHeight + "px";
+      });
+    });
+  </script>
 </body>
+
 
 </html>
