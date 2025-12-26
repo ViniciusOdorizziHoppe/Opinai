@@ -19,7 +19,8 @@
   </header>
 
   <div class="form-wrapper">
-    <form action="/cadastro" method="POST">
+ <form onsubmit="salvarTodo(event)">
+
       <div class="form-content">
         <p>Faça seu cadastro!</p>
 
@@ -34,7 +35,8 @@
         </div>
       </div>
 
-      <button type="submit" onclick="salvarTodo()">Cadastrar</button>
+      <button type="submit">Cadastrar</button>
+
     </form>
 
     <!-- Botão de ajuda -->

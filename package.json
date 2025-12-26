@@ -1,11 +1,12 @@
 {
   "dependencies": {
-    "express": "^5.1.0",
+    "cors": "^2.8.5",
+    "express": "^5.2.1",
     "fs": "^0.0.1-security",
-    "mysql2": "^3.14.5",
+    "mysql2": "^3.16.0",
     "path": "^0.12.7"
   },
-  "name": "opinai",
+  "name": "opinai-backend",
   "version": "1.0.0",
   "description": "",
   "type": "module",
