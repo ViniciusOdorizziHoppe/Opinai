@@ -88,33 +88,37 @@ function encaminhar() {
 
 // SIDEBAR TOGGLE
 document.addEventListener("DOMContentLoaded", () => {
-  const sidebar = document.getElementById('sidebar');
-  const closeBtn = document.getElementById('closeBtn');
-  const openBtn = document.getElementById('openBtn');
-  const mainSection = document.getElementById('mainSection');
+  const sidebar = document.getElementById("sidebar");
+  const closeBtn = document.getElementById("closeBtn");
+  const openBtn = document.getElementById("openBtn");
+  const mainSection = document.getElementById("mainSection") || null;
 
   if (sidebar && closeBtn && openBtn) {
     // Fecha a sidebar
-    closeBtn.addEventListener('click', () => {
-      sidebar.classList.add('closed');
-      mainSection.classList.add('expanded');
-      setTimeout(() => openBtn.classList.add('visible'), 300);
+    closeBtn.addEventListener("click", () => {
+      sidebar.classList.add("closed");
+
+      if (mainSection) {
+        mainSection.classList.add("expanded");
+      }
+
+      setTimeout(() => {
+        openBtn.classList.add("visible");
+      }, 300);
     });
 
     // Abre a sidebar
-    openBtn.addEventListener('click', () => {
-      sidebar.classList.remove('closed');
-      mainSection.classList.remove('expanded');
-      openBtn.classList.remove('visible');
+    openBtn.addEventListener("click", () => {
+      sidebar.classList.remove("closed");
+
+      if (mainSection) {
+        mainSection.classList.remove("expanded");
+      }
+
+      openBtn.classList.remove("visible");
     });
   }
 });
-const video = document.getElementById("video");
-const btnAbrir = document.getElementById("btnAbrir");
-const btnFoto = document.getElementById("btnFoto");
-const preview = document.getElementById("preview");
-const canvas = document.createElement("canvas");
-let stream = null;
 
 // Abrir câmera
 async function startCamera() {
