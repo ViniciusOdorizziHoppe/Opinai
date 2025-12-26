@@ -3,53 +3,19 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background: url('../assets/BackgroundCadastro.png') no-repeat center center fixed;
+    background: url('../assets/backgroundPadrao.png') no-repeat center center fixed;
     background-size: cover;
     color: #2c3e50;
-}
-
-/* Header */
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.header img {
-    width: 55px;
-    border-radius: 20%;
-}
-
-.header-text {
-    text-align: center;
-}
-
-.header h1 {
-    margin: 0;
-    font-size: 2rem;
-    background: linear-gradient(135deg, #26cc63, #2ab4da, #28c09e);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.header h2 {
-    margin: 0;
-    font-size: 1rem;
-    color: #333;
 }
 
 /* Container central */
 .container {
     background: rgba(255, 255, 255, 0.95);
-    padding: 30px;
+    padding: 3px 30px 30px;
     border-radius: 20px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     max-width: 600px;
-    margin: 30px auto;
+    margin: 20px auto;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -73,6 +39,67 @@ body {
 
 .page-button:hover {
     background-position: 100% 0;
+}
+
+/* Botões de ação */
+.action-button {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 260px;
+  padding: 14px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #26cc63, #2ab4da, #28c09e);
+  background-size: 300% 300%;
+  color: white;
+  font-family: inherit;
+  cursor: pointer;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.action-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.35);
+  animation: gradient-move 3s linear infinite;
+}
+
+.action-button span {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* Área da imagem 1:1 */
+.icon-box {
+  width: 72px;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Imagem em si */
+.icon-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Animação do degradê */
+@keyframes gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 300% 50%;
+  }
 }
 
 /* Form */
@@ -132,6 +159,46 @@ input, textarea {
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
 }
 
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 20px;
+  background: #ffffffcc;
+  /* leve transparência para ver o fundo */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+  border-radius: 12px;
+}
+
+.header img {
+  width: 55px;
+  height: auto;
+  border-radius: 20%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.header-text {
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 2rem;
+  margin: 0;
+  font-family: 'Arial Black', Arial, sans-serif;
+  background: linear-gradient(135deg, #26cc63, #2ab4da, #28c09e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header h2 {
+  font-size: 1rem;
+  margin: 0;
+  color: #333;
+}
+
 /* Sidebar */
 .sidebar {
   position: fixed;
@@ -152,10 +219,7 @@ input, textarea {
 .sidebar nav ul {
   list-style: none;
   padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin-top: 50px;
 }
 
 .sidebar nav ul li {
@@ -196,6 +260,7 @@ input, textarea {
   0% {
     background-position: 0% 50%;
   }
+
   100% {
     background-position: 300% 50%;
   }
@@ -217,8 +282,9 @@ input, textarea {
 
 .open-btn {
   position: fixed;
-  top: 5px;
+  top: 10px;
   left: -50px;
+  /* fora da tela inicialmente */
   background: #176f5c;
   color: white;
   border: none;

@@ -1,45 +1,50 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Opinaí - Denúncia</title>
-
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-
   <!-- CSS da página -->
   <link rel="stylesheet" href="./css/denuncia.css">
+  <link rel="icon" href="./assets/iconOpinai.png" type="image/png">
+  <title>Opinaí - Denúncia</title>
 </head>
+
 <body>
   <!-- Barra Lateral -->
   <div id="sidebar" class="sidebar closed">
     <button class="close-btn" id="closeBtn">✖</button>
     <nav>
       <ul>
-        <li><a href="inicio.html">Tela Inicial</a></li>
-        <li><a href="verdenuncia.html">Ver Denúncias</a></li>
+        <li><a href="inicio.html">Página Inicial</a></li>
+        <li><a href="denuncia.html">Fazer Denúncia</a></li>
+        <li><a href="verDenuncia.html">Ver Denúncias</a></li>
         <li><a href="ajuda.html">Suporte / Ajuda</a></li>
       </ul>
     </nav>
   </div>
   <button id="openBtn" class="open-btn visible">☰</button>
 
-  <!-- HEADER -->
-  <div class="header">
-    <img src="./assets/OpinaiLogo.png" alt="Opinaí">
+  <!-- Header -->
+  <header class="header">
+    <img src="./assets/opinaiLogo.png" alt="Logo Opinai">
     <div class="header-text">
-      <h1>Denúncias</h1>
-      <h2>Envie sua denúncia de forma segura</h2>
+      <h1>Denunciar</h1>
+      <h2>Faça sua denúncia!</h2>
     </div>
-  </div>
+  </header>
 
   <!-- ETAPA 1: MAPA -->
   <div id="telaMapa" class="container">
     <h2>Onde denunciar?</h2>
 
-    <button id="btnAbrirMapa" class="page-button">
-      Abrir mapa
+    <button id="btnAbrirMapa" class="action-button">
+      <div class="icon-box">
+        <img src="assets/globo.png" alt="Abrir mapa">
+      </div>
+      <span>Abrir mapa</span>
     </button>
 
     <div id="map" style="display:none;"></div>
@@ -53,9 +58,14 @@
   <div id="telaDenuncia" class="container" style="display:none;">
     <h2>Fazer Denúncia</h2>
 
-    <button id="btnAbrir" class="page-button">Abrir Câmera</button>
+    <button id="btnAbrirCamera" class="action-button">
+      <div class="icon-box">
+        <img src="./assets/camera.png" alt="Abrir câmera">
+      </div>
+      <span>Abrir câmera</span>
+    </button>
     <video id="video" autoplay playsinline style="display:none"></video>
-    <button id="btnFoto" class="page-button" onclick="tirarFoto()"style="display:none">Tirar Foto</button>
+    <button id="btnFoto" class="page-button" onclick="tirarFoto()" style="display:none">Tirar Foto</button>
 
     <div id="preview"></div>
 
@@ -82,4 +92,5 @@
   <script src="./js/telas.js"></script>
   <script src="script.js"></script>
 </body>
+
 </html>

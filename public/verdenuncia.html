@@ -1,15 +1,40 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/verDenuncias.css">
+    <link rel="icon" href="./assets/iconOpinai.png" type="image/png">
     <title>Ver as Denúncias</title>
 </head>
+
 <body>
-    <div id="sidebar" class="sidebar closed"></div>
+    <!-- Barra Lateral -->
+    <div id="sidebar" class="sidebar closed">
+        <button class="close-btn" id="closeBtn">✖</button>
+        <nav>
+            <ul>
+                <li><a href="inicio.html">Página Inicial</a></li>
+                <li><a href="denuncia.html">Fazer Denúncia</a></li>
+                <li><a href="verDenuncia.html">Ver Denúncias</a></li>
+                <li><a href="ajuda.html">Suporte / Ajuda</a></li>
+            </ul>
+        </nav>
+    </div>
     <button id="openBtn" class="open-btn visible">☰</button>
+
+    <!-- HEADER -->
+    <header class="header">
+        <img src="./assets/opinaiLogo.png" alt="Logo Opinai">
+        <div class="header-text">
+            <h1>Opinaí</h1>
+            <h2>Opine pelo celular!</h2>
+        </div>
+    </header>
 
     <div id="listaDenuncias" class="feed"></div>
     <script src="script.js"></script>
 </body>
+
 </html>
