@@ -249,7 +249,7 @@ textarea {
   left: 0;
   width: 140px;
   height: 100%;
-  background: #176f5c;
+  background: #176f5ce1;
   color: white;
   padding: 10px 10px;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
@@ -330,7 +330,7 @@ textarea {
   top: 10px;
   left: -50px;
   /* fora da tela inicialmente */
-  background: #176f5c;
+  background: #176f5ce1;
   color: white;
   border: none;
   font-size: 20px;
@@ -353,17 +353,27 @@ textarea {
 
 /* Conteúdo principal */
 section {
-  margin-left: 160px;
+  margin-left: 0;
+  transition: none;
   padding: 40px;
-  transition: margin-left 0.3s ease;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: calc(100vh - 100px);
 }
 
-section.expanded {
-  margin-left: 20px;
+.main-content {
+  background: #ffffffcc;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 600px;
+  text-align: center;
+}
+
+.main-content p {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.6;
 }
 
 .main-content {
