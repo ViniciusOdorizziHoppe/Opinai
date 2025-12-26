@@ -163,3 +163,12 @@ btnFoto.addEventListener("click", () => {
 
   stopCamera();
 });
+window.addEventListener("load", () => {
+  const splash = document.getElementById("splash");
+  const app = document.getElementById("app");
+
+  if (splash && app) {
+    splash.style.display = "none";
+    app.style.display = "block";
+  }
+});
