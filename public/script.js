@@ -1,30 +1,34 @@
-async function salvarTodo(email, senha) {
+async function salvarTodo(event) {
+  event.preventDefault(); // impede abrir /cadastro no navegador
+
+  const email = document.getElementById("email").value;
+  const senha = document.getElementById("senha").value;
+
   try {
     const response = await fetch('http://localhost:2409/cadastro', {
       method: 'POST',
       headers: {
-        'Content-type': 'application/json; charset=UTF-8',
+        'Content-Type': 'application/json; charset=UTF-8',
       },
-      body: JSON.stringify({
-        senha: senha,
-        email: email
-      })
+      body: JSON.stringify({ email, senha })
     });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
 
     const data = await response.json();
     console.log("Data fetched:", data);
 
-    encaminhar();
+    if (data.success) {
+      alert(data.message);
+      encaminhar();
+    } else {
+      alert("Erro ao cadastrar!");
+    }
 
   } catch (error) {
     console.error("Fetch error:", error);
     alert("Erro ao salvar, tente novamente!");
   }
 }
+
 
 let denuncias = JSON.parse(localStorage.getItem("denuncias")) || [];
 
