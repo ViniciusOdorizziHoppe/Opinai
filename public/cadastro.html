@@ -1,47 +1,60 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <link rel="manifest" href="manifest.json">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link rel="stylesheet" href="./css/cadastro.css">
   <link rel="icon" href="./assets/iconOpinai.png" type="image/png">
+
   <title>Cadastro - Opinaí</title>
 </head>
+
 <body>
-  <header class="header">
-    <img src="/assets/opinaiLogo.png" alt="Logo Opinai">
-    <div>
-      <h1>Opinaí</h1>
-      <h2>Comunidade mais próxima de você</h2>
-    </div>
-  </header>
-  <div class="form-wrapper">
- <form onsubmit="salvarTodo(event)">
-      <div class="form-content">
-        <p>Faça seu cadastro!</p>
-
-        <div>
-          <label for="nome">Email próprio:</label>
-          <input type="email" name="email" id="email" placeholder="JohnDoe2009@gmail.com" required>
-        </div>
-
-        <div>
-          <label for="email">Senha:</label>
-          <input type="password" name="senha" id="senha" placeholder="12345678" required>
-        </div>
-      </div>
-
-      <button type="submit">Cadastrar</button>
-
-    </form>
-
-    <!-- Botão de ajuda -->
-    <a href="ajudaCadastro.html" class="help-btn">Ajuda ?</a>
+  <!-- Splash / Loading -->
+  <div id="splash">
+    <img src="./assets/iconOpinai.png" alt="Opinaí" class="splash-logo">
+    <div class="loader"></div>
+    <p>Carregando Opinaí...</p>
   </div>
 
-  <script src="./script.js"></script>
-</body>
+  <!-- App -->
+  <div id="app" style="display:none;">
 
+    <header class="header">
+      <img src="/assets/opinaiLogo.png" alt="Logo Opinai">
+      <div>
+        <h1>Opinaí</h1>
+        <h2>Comunidade mais próxima de você</h2>
+      </div>
+    </header>
+
+    <div class="form-wrapper">
+      <form onsubmit="salvarTodo(event)">
+        <div class="form-content">
+          <p>Faça seu cadastro!</p>
+
+          <div>
+            <label for="email">Email próprio:</label>
+            <input type="email" name="email" id="email" placeholder="JohnDoe2009@gmail.com" required>
+          </div>
+
+          <div>
+            <label for="senha">Senha:</label>
+            <input type="password" name="senha" id="senha" placeholder="12345678" required>
+          </div>
+        </div>
+
+        <button type="submit">Cadastrar</button>
+      </form>
+
+      <!-- Botão de ajuda -->
+      <a href="ajudaCadastro.html" class="help-btn">Ajuda ?</a>
+    </div>
+
+  </div>
+
+  <script src="./script.js" defer></script>
+</body>
 </html>
