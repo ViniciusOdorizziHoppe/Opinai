@@ -126,9 +126,8 @@ input, textarea {
 
 #preview img {
   width: 100%;
-  height: auto;          /* mantém proporção original */
+  height: auto;
   display: block;
-
   border-radius: 14px;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
 }
@@ -142,7 +141,7 @@ input, textarea {
   height: 100%;
   background: #176f5c;
   color: white;
-  padding: 20px 10px;
+  padding: 10px 10px;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
   display: flex;
   flex-direction: column;
@@ -153,7 +152,10 @@ input, textarea {
 .sidebar nav ul {
   list-style: none;
   padding: 0;
-  margin-top: 50px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .sidebar nav ul li {
@@ -194,7 +196,6 @@ input, textarea {
   0% {
     background-position: 0% 50%;
   }
-
   100% {
     background-position: 300% 50%;
   }
@@ -216,7 +217,7 @@ input, textarea {
 
 .open-btn {
   position: fixed;
-  top: 20px;
+  top: 5px;
   left: -50px;
   background: #176f5c;
   color: white;
@@ -248,7 +249,6 @@ section {
   justify-content: center;
   align-items: center;
   min-height: calc(100vh - 100px);
-  /* ocupa toda a tela menos header */
 }
 
 section.expanded {
@@ -257,7 +257,6 @@ section.expanded {
 
 .main-content {
   background: #ffffffcc;
-  /* leve transparência */
   padding: 30px;
   border-radius: 12px;
   max-width: 600px;

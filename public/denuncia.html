@@ -13,7 +13,7 @@
 </head>
 <body>
   <!-- Barra Lateral -->
-  <div class="sidebar" id="sidebar">
+  <div id="sidebar" class="sidebar closed">
     <button class="close-btn" id="closeBtn">✖</button>
     <nav>
       <ul>
@@ -23,7 +23,7 @@
       </ul>
     </nav>
   </div>
-  <button class="open-btn" id="openBtn">☰</button>
+  <button id="openBtn" class="open-btn visible">☰</button>
 
   <!-- HEADER -->
   <div class="header">
@@ -60,10 +60,10 @@
     <div id="preview"></div>
 
     <form class="form-content">
-      <label for="tituloDenuncia">Título:</label>
+      <label for="tituloDenuncia"><b>Título:</b></label>
       <input type="text" id="tituloDenuncia" placeholder="Buraco na estrada">
 
-      <label for="denuncia">Descreva a denúncia:</label>
+      <label for="denuncia"><b>Descreva a denúncia:</b></label>
       <textarea id="denuncia" placeholder="Explique o problema"></textarea>
     </form>
 
