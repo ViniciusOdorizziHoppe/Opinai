@@ -219,7 +219,10 @@ input, textarea {
 .sidebar nav ul {
   list-style: none;
   padding: 0;
-  margin-top: 50px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .sidebar nav ul li {
@@ -260,7 +263,6 @@ input, textarea {
   0% {
     background-position: 0% 50%;
   }
-
   100% {
     background-position: 300% 50%;
   }
@@ -282,7 +284,11 @@ input, textarea {
 
 .open-btn {
   position: fixed;
+<<<<<<< HEAD
   top: 10px;
+=======
+  top: 5px;
+>>>>>>> 08718b4784d4a0e069b38b4a97843b25c18f028c
   left: -50px;
   /* fora da tela inicialmente */
   background: #176f5c;
