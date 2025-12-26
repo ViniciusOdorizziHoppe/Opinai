@@ -121,7 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Câmera
 const video = document.getElementById("video");
-const btnAbrir = document.getElementById("btnAbrir");
+const btnAbrir = document.getElementById("btnAbrirCamera");
 const btnFoto = document.getElementById("btnFoto");
 const preview = document.getElementById("preview");
 const canvas = document.createElement("canvas");
@@ -131,10 +131,10 @@ async function startCamera() {
   try {
     stream = await navigator.mediaDevices.getUserMedia({ video: true });
     video.srcObject = stream;
-    video.style.display = "block";
-    btnFoto.style.display = "inline-block";
-    btnAbrir.style.display = "none";
-    preview.innerHTML = "";
+    video.style.display = "block";       // mostra o vídeo
+    btnFoto.style.display = "inline-block"; // mostra botão de tirar foto
+    btnAbrir.style.display = "none";     // esconde botão de abrir câmera
+    preview.innerHTML = "";               // limpa preview anterior
   } catch (err) {
     alert("Erro ao acessar a câmera: " + err.message);
   }
@@ -152,18 +152,14 @@ function stopCamera() {
   btnAbrir.textContent = "Tirar novamente?";
 }
 
-if (btnAbrir && btnFoto && video && preview) {
-  btnAbrir.addEventListener("click", startCamera);
+btnFoto.addEventListener("click", () => {
+  const ctx = canvas.getContext("2d");
+  canvas.width = video.videoWidth;
+  canvas.height = video.videoHeight;
+  ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-  btnFoto.addEventListener("click", () => {
-    const ctx = canvas.getContext("2d");
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+  const dataUrl = canvas.toDataURL("image/png");
+  preview.innerHTML = `<div class="photo-frame"><img src="${dataUrl}" alt="Preview da foto"></div>`;
 
-    const dataUrl = canvas.toDataURL("image/png");
-    preview.innerHTML = `<div class="photo-frame"><img src="${dataUrl}" alt="Preview da foto"></div>`;
-
-    stopCamera();
-  });
-}
+  stopCamera();
+});

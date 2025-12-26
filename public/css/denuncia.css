@@ -159,6 +159,34 @@ input, textarea {
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
 }
 
+/* Botao de localização atual */
+:root { --btn-size: 45px; }
+
+#telaMapa {
+  position: relative; /* container do mapa */
+}
+
+#btnLocalizacao {
+  position: absolute;
+  bottom: 20px;       /* distancia do canto inferior do mapa */
+  right: 10px;        /* distancia da borda direita */
+  width: var(--btn-size, 45px);
+  height: var(--btn-size, 45px);
+  border-radius: 50%;
+  border: 2px solid #000;
+  background: #fff;
+  color: #000;
+  font-size: calc(var(--btn-size, 45px) / 2);
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,.4);
+  z-index: 1000;
+  display: none;
+}
+
+#btnLocalizacao:hover {
+  background: #eee; /* leve efeito no hover */
+}
+
 /* Header */
 .header {
   display: flex;

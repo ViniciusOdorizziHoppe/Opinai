@@ -4,30 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <!-- CSS da página -->
   <link rel="stylesheet" href="./css/denuncia.css">
   <link rel="icon" href="./assets/iconOpinai.png" type="image/png">
   <title>Denúnciar - Opinaí</title>
 </head>
 
 <body>
-  <!-- Barra Lateral -->
-  <div id="sidebar" class="sidebar closed">
-    <button class="close-btn" id="closeBtn">✖</button>
-    <nav>
-      <ul>
-        <li><a href="inicio.html">Página Inicial</a></li>
-        <li><a href="denuncia.html">Fazer Denúncia</a></li>
-        <li><a href="verdenuncia.html">Ver Denúncias</a></li>
-        <li><a href="ajuda.html">Suporte / Ajuda</a></li>
-      </ul>
-    </nav>
-  </div>
-  <button id="openBtn" class="open-btn visible">☰</button>
-
-  <!-- Header -->
   <header class="header">
     <img src="/assets/opinaiLogo.png" alt="Logo Opinai">
     <div class="header-text">
@@ -37,7 +20,7 @@
   </header>
 
   <!-- ETAPA 1: MAPA -->
-  <div id="telaMapa" class="container">
+  <div id="telaMapa" class="container" style="position: relative;">
     <h2>Onde denunciar?</h2>
 
     <button id="btnAbrirMapa" class="action-button">
@@ -47,7 +30,9 @@
       <span>Abrir mapa</span>
     </button>
 
-    <div id="map" style="display:none;"></div>
+    <div id="map" style="display:none; height:500px; position:relative;">
+      <button id="btnLocalizacao" onclick="usarLocalizacaoAtual()" style="display:none;">📍</button>
+    </div>
 
     <button id="btnIrDenuncia" class="page-button" style="display:none;">
       Denunciar neste local
@@ -64,8 +49,9 @@
       </div>
       <span>Abrir câmera</span>
     </button>
+
     <video id="video" autoplay playsinline style="display:none"></video>
-    <button id="btnFoto" class="page-button" onclick="tirarFoto()" style="display:none">Tirar Foto</button>
+    <button id="btnFoto" class="page-button" onclick="stopCamera()" style="display:none">Tirar Foto</button>
 
     <div id="preview"></div>
 
@@ -82,15 +68,10 @@
     </button>
   </div>
 
-  <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
-  <!-- JS do mapa -->
   <script src="./js/mapa.js"></script>
-
-  <!-- JS de controle das telas -->
   <script src="./js/telas.js"></script>
-  <script src="./script.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>

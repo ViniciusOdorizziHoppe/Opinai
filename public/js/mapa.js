@@ -1,33 +1,86 @@
 console.log('mapa.js carregado');
 
-let map = null;
-window.localSelecionado = null;
-let markerSelecionado = null;
+document.addEventListener('DOMContentLoaded', () => {
 
-window.iniciarMapa = function () {
-  if (map) return;
+  // Variáveis globais
+  let map = null;
+  window.localSelecionado = null;
+  let markerSelecionado = null;
 
-  map = L.map('map').setView([-14.2350, -51.9253], 5);
-  window.map = map;
+  // Elementos do DOM
+  const mapDiv = document.getElementById("map");
+  const btnLocalizacao = document.getElementById("btnLocalizacao");
+  const btnIrDenuncia = document.getElementById("btnIrDenuncia");
 
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors'
-  }).addTo(map);
+  // Inicialmente esconder mapa e botões
+  mapDiv.style.display = "none";
+  btnLocalizacao.style.display = "none";
+  btnIrDenuncia.style.display = "none";
 
-  map.on('click', e => {
-    window.localSelecionado = e.latlng;
+  // Função para mostrar/esconder botão de denunciar
+  function atualizarBotaoDenunciar() {
+    if (window.localSelecionado) {
+      btnIrDenuncia.style.display = "block";
+    } else {
+      btnIrDenuncia.style.display = "none";
+    }
+  }
 
-    if (markerSelecionado) {
-      map.removeLayer(markerSelecionado);
+  // Inicializa o mapa
+  window.iniciarMapa = function () {
+    if (map) return;
+
+    map = L.map('map').setView([-14.2350, -51.9253], 5);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    map.on('click', e => {
+      window.localSelecionado = e.latlng;
+
+      if (markerSelecionado) {
+        map.removeLayer(markerSelecionado);
+      }
+
+      markerSelecionado = L.marker(e.latlng)
+        .addTo(map)
+        .bindPopup('📌 Local da denúncia')
+        .openPopup();
+
+      atualizarBotaoDenunciar();
+    });
+
+    setTimeout(() => {
+      map.invalidateSize();
+    }, 200);
+  };
+
+  // Botão de localização atual
+  window.usarLocalizacaoAtual = function () {
+    if (!navigator.geolocation) {
+      alert("Geolocalização não suportada.");
+      return;
     }
 
-    markerSelecionado = L.marker(e.latlng)
-      .addTo(map)
-      .bindPopup('📌 Local da denúncia')
-      .openPopup();
-  });
+    navigator.geolocation.getCurrentPosition(
+      pos => {
+        const latlng = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+        window.localSelecionado = latlng;
 
-  setTimeout(() => {
-    map.invalidateSize();
-  }, 200);
-};
+        if (markerSelecionado) {
+          map.removeLayer(markerSelecionado);
+        }
+
+        markerSelecionado = L.marker(latlng)
+          .addTo(map)
+          .bindPopup('📍 Localização atual')
+          .openPopup();
+
+        map.setView(latlng, 16);
+        atualizarBotaoDenunciar();
+      },
+      () => alert("Não foi possível obter sua localização.")
+    );
+  };
+});
