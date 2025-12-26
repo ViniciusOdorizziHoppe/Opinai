@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
       openBtn.classList.remove('visible');
     });
 
-// ---------------- CÂMERA ----------------
+// Câmera
 
 const video = document.getElementById("video");
 const btnAbrir = document.getElementById("btnAbrir");
@@ -185,3 +185,7 @@ if (btnAbrir && btnFoto && video && preview) {
     stopCamera();
   });
 }
+
+/* Tentativa de arrumar logo */
+import path from "path";
+app.use(express.static(path.join(process.cwd(), "public")));
