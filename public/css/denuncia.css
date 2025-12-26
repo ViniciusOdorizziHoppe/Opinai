@@ -133,6 +133,7 @@ input, textarea {
 
   background: linear-gradient(135deg, #26cc63, #2ab4da, #28c09e);
   background-size: 300% 300%;
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
@@ -217,6 +218,7 @@ input, textarea {
   margin: 0;
   font-family: 'Arial Black', Arial, sans-serif;
   background: linear-gradient(135deg, #26cc63, #2ab4da, #28c09e);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
