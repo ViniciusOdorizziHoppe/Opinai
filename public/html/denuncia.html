@@ -3,9 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <link rel="stylesheet" href="/public/css/denuncia.css">
-  <link rel="icon" href="/public/assets/iconOpinai.png" type="image/png">
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../css/denuncia.css">
+
+  <!-- Ícone -->
+  <link rel="icon" href="../assets/iconOpinai.png" type="image/png">
+
   <title>Denunciar - Opinaí</title>
 </head>
 
@@ -16,10 +23,10 @@
     <button class="close-btn" id="closeBtn">✖</button>
     <nav>
       <ul>
-        <li><a href="/public/html/inicio.html">Página Inicial</a></li>
-        <li><a href="/public/html/denuncia.html">Fazer Denúncia</a></li>
-        <li><a href="/public/html/verdenuncia.html">Ver Denúncias</a></li>
-        <li><a href="/public/html/ajuda.html">Suporte / Ajuda</a></li>
+        <li><a href="../html/inicio.html">Página Inicial</a></li>
+        <li><a href="../html/denuncia.html">Fazer Denúncia</a></li>
+        <li><a href="../html/verdenuncia.html">Ver Denúncias</a></li>
+        <li><a href="../html/ajuda.html">Suporte / Ajuda</a></li>
       </ul>
     </nav>
   </div>
@@ -27,7 +34,7 @@
 
   <!-- Header -->
   <header class="header">
-    <img src="/public/assets/OpinaiLogo.png" alt="Logo Opinai">
+    <img src="../assets/OpinaiLogo.png" alt="Logo Opinai">
     <div class="header-text">
       <h1>Denunciar</h1>
       <h2>Faça sua denúncia!</h2>
@@ -40,7 +47,7 @@
 
     <button id="btnAbrirMapa" class="action-button">
       <div class="icon-box">
-        <img src="/public/assets/globo.png" alt="Abrir mapa">
+        <img src="../assets/globo.png" alt="Abrir mapa">
       </div>
       <span>Abrir mapa</span>
     </button>
@@ -60,12 +67,12 @@
 
     <button id="btnAbrirCamera" class="action-button">
       <div class="icon-box">
-        <img src="/public/assets/camera.png" alt="Abrir câmera">
+        <img src="../assets/camera.png" alt="Abrir câmera">
       </div>
       <span>Abrir câmera</span>
     </button>
 
-    <!-- ➕ Botão trocar câmera -->
+    <!-- Botão trocar câmera -->
     <button id="btnTrocarCamera" class="page-button" style="display:none;">
       🔄 Trocar câmera
     </button>
@@ -88,10 +95,11 @@
     </button>
   </div>
 
+  <!-- Scripts -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <script src="/public/js/mapa.js"></script>
-  <script src="/public/js/telas.js"></script>
-  <script src="/public/script.js"></script>
+  <script src="../js/mapa.js"></script>
+  <script src="../js/telas.js"></script>
+  <script src="../script.js"></script>
 
 </body>
 </html>
