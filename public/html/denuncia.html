@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,7 +19,7 @@
   </header>
 
   <!-- ETAPA 1: MAPA -->
-  <div id="telaMapa" class="container" style="position: relative;">
+  <div id="telaMapa" class="container">
     <h2>Onde denunciar?</h2>
 
     <button id="btnAbrirMapa" class="action-button">
@@ -43,15 +42,20 @@
   <div id="telaDenuncia" class="container" style="display:none;">
     <h2>Fazer Denúncia</h2>
 
-    <button id="btnAbrirCamera" onclick="startCamera()" class="action-button">
+    <button id="btnAbrirCamera" class="action-button">
       <div class="icon-box">
         <img src="/public/assets/camera.png" alt="Abrir câmera">
       </div>
       <span>Abrir câmera</span>
     </button>
 
+    <!-- ➕ Botão trocar câmera -->
+    <button id="btnTrocarCamera" class="page-button" style="display:none;">
+      🔄 Trocar câmera
+    </button>
+
     <video id="video" autoplay playsinline style="display:none"></video>
-    <button id="btnFoto" class="page-button" onclick="stopCamera()" style="display:none">Tirar Foto</button>
+    <button id="btnFoto" class="page-button" style="display:none">Tirar Foto</button>
 
     <div id="preview"></div>
 
@@ -59,7 +63,7 @@
       <label for="tituloDenuncia"><b>Título:</b></label>
       <input type="text" id="tituloDenuncia" placeholder="Buraco na estrada">
       <label for="denuncia"><b>Descreva a denúncia:</b></label>
-      <textarea type="text" id="denuncia" placeholder="Explique o problema"></textarea>
+      <textarea id="denuncia" placeholder="Explique o problema"></textarea>
     </form>
 
     <button type="button" onclick="criarDenuncia()" class="page-button">
@@ -71,6 +75,11 @@
   <script src="/public/js/mapa.js"></script>
   <script src="/public/js/telas.js"></script>
   <script src="/public/script.js"></script>
+
 </body>
+<<<<<<< HEAD
 
 </html>
+=======
+</html>
+>>>>>>> 8219e3a5f824cfe535806ef151b18f51b50eb95c
