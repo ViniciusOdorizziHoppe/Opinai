@@ -116,25 +116,38 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ==========================
-  // Câmera
+  // Câmera com troca frontal/traseira
   // ==========================
   const video = document.getElementById("video");
   const btnAbrir = document.getElementById("btnAbrirCamera");
   const btnFoto = document.getElementById("btnFoto");
+  const btnTrocar = document.getElementById("btnTrocarCamera");
   const preview = document.getElementById("preview");
 
   if (video && btnAbrir && btnFoto && preview) {
     const canvas = document.createElement("canvas");
     let stream = null;
+    let usarFrontal = true; // começa com frontal
 
     async function startCamera() {
       try {
-        stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        if (stream) {
+          stream.getTracks().forEach(track => track.stop());
+        }
+
+        stream = await navigator.mediaDevices.getUserMedia({
+          video: {
+            facingMode: usarFrontal ? "user" : "environment"
+          }
+        });
+
         video.srcObject = stream;
         video.style.display = "block";
         btnFoto.style.display = "inline-block";
         btnAbrir.style.display = "none";
+        if (btnTrocar) btnTrocar.style.display = "inline-block";
         preview.innerHTML = "";
+
       } catch (err) {
         alert("Erro ao acessar a câmera: " + err.message);
       }
@@ -148,6 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
       video.srcObject = null;
       video.style.display = "none";
       btnFoto.style.display = "none";
+      if (btnTrocar) btnTrocar.style.display = "none";
       btnAbrir.style.display = "inline-block";
       btnAbrir.textContent = "Tirar novamente?";
     }
@@ -169,6 +183,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       stopCamera();
     });
+
+    if (btnTrocar) {
+      btnTrocar.addEventListener("click", () => {
+        usarFrontal = !usarFrontal;
+        startCamera();
+      });
+    }
   }
 });
 
