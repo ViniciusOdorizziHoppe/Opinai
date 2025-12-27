@@ -15,7 +15,6 @@ body {
   gap: 15px;
   padding: 20px;
   background: #ffffffcc;
-  /* leve transparência para ver o fundo */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   position: relative;
   border-radius: 12px;
@@ -133,7 +132,6 @@ body {
   position: fixed;
   top: 10px;
   left: -50px;
-  /* fora da tela inicialmente */
   background: #176f5ce1;
   color: white;
   border: none;
