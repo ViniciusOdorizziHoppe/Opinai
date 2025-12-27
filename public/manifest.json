@@ -6,7 +6,7 @@
   "background_color": "#0d1b2a",
   "theme_color": "#0d1b2a",
   "icons": [
-    { "src": "/assets/opinaiLogo.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "/assets/opinaiLogo.png", "sizes": "512x512", "type": "image/png" }
+    { "src": "/public/assets/OpinaiLogo.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/public/assets/OpinaiLogo.png", "sizes": "512x512", "type": "image/png" }
   ]
 }
