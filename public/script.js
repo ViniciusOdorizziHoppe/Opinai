@@ -75,13 +75,6 @@ function criarDenuncia() {
   alert("Denúncia registrada!");
   encaminhar2();
 }
-<<<<<<< HEAD
-
-=======
-function encaminhar2() {
-  window.location.href = "/html/inicio.html";
-}
->>>>>>> b4a6e34818d3a81794099a2c4467e96fe73247b2
 function mostrarDenuncias() {
   let container = document.getElementById("listaDenuncias");
   if (!container) return;
@@ -98,18 +91,16 @@ function mostrarDenuncias() {
   });
 }
 
-<<<<<<< HEAD
 // ==========================
 // DOM Ready
 // ==========================
-=======
+
 // redirecionamento genérico
 function encaminhar() {
   window.location.href = "/html/inicio.html";
 }
 
 // Sidebar
->>>>>>> b4a6e34818d3a81794099a2c4467e96fe73247b2
 document.addEventListener("DOMContentLoaded", () => {
   mostrarDenuncias();
 
@@ -190,11 +181,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-<<<<<<< HEAD
 // ==========================
 // Splash screen
 // ==========================
-=======
     closeBtn.addEventListener('click', () => {
       sidebar.classList.add('closed');
       mainSection?.classList.add('expanded');
@@ -250,7 +239,6 @@ btnFoto.addEventListener("click", () => {
 
   stopCamera();
 });
->>>>>>> b4a6e34818d3a81794099a2c4467e96fe73247b2
 window.addEventListener("load", () => {
   const splash = document.getElementById("splash");
   const app = document.getElementById("app");

@@ -5,39 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-<<<<<<< HEAD
   <link rel="stylesheet" href="/public/css/denuncia.css">
   <link rel="icon" href="/public/assets/iconOpinai.png" type="image/png">
-=======
-  <link rel="stylesheet" href="../css/denuncia.css">
-  <link rel="icon" href="../assets/iconOpinai.png" type="image/png">
->>>>>>> b4a6e34818d3a81794099a2c4467e96fe73247b2
   <title>Denúnciar - Opinaí</title>
 </head>
 
 <body>
-<<<<<<< HEAD
   <header class="header">
     <img src="/public/assets/OpinaiLogo.png" alt="Logo Opinai">
-=======
-  <!-- Barra Lateral -->
-  <div id="sidebar" class="sidebar closed">
-    <button class="close-btn" id="closeBtn">✖</button>
-    <nav>
-      <ul>
-        <li><a href="../html/inicio.html">Página Inicial</a></li>
-        <li><a href="../html/denuncia.html">Fazer Denúncia</a></li>
-        <li><a href="../html/verdenuncia.html">Ver Denúncias</a></li>
-        <li><a href="../html/ajuda.html">Suporte / Ajuda</a></li>
-      </ul>
-    </nav>
-  </div>
-  <button id="openBtn" class="open-btn visible">☰</button>
-
-  <!-- Header -->
-  <header class="header">
-    <img src="../assets/opinaiLogo.png" alt="Logo Opinai">
->>>>>>> b4a6e34818d3a81794099a2c4467e96fe73247b2
     <div class="header-text">
       <h1>Denunciar</h1>
       <h2>Faça sua denúncia!</h2>
@@ -50,11 +25,7 @@
 
     <button id="btnAbrirMapa" class="action-button">
       <div class="icon-box">
-<<<<<<< HEAD
         <img src="/public/assets/globo.png" alt="Abrir mapa">
-=======
-        <img src="../assets/globo.png" alt="Abrir mapa">
->>>>>>> b4a6e34818d3a81794099a2c4467e96fe73247b2
       </div>
       <span>Abrir mapa</span>
     </button>
@@ -74,11 +45,7 @@
 
     <button id="btnAbrirCamera" onclick="startCamera()" class="action-button">
       <div class="icon-box">
-<<<<<<< HEAD
         <img src="/public/assets/camera.png" alt="Abrir câmera">
-=======
-        <img src="../assets/camera.png" alt="Abrir câmera">
->>>>>>> b4a6e34818d3a81794099a2c4467e96fe73247b2
       </div>
       <span>Abrir câmera</span>
     </button>
@@ -91,10 +58,6 @@
     <form class="form-content">
       <label for="tituloDenuncia"><b>Título:</b></label>
       <input type="text" id="tituloDenuncia" placeholder="Buraco na estrada">
-<<<<<<< HEAD
-
-=======
->>>>>>> b4a6e34818d3a81794099a2c4467e96fe73247b2
       <label for="denuncia"><b>Descreva a denúncia:</b></label>
       <textarea type="text" id="denuncia" placeholder="Explique o problema"></textarea>
     </form>
@@ -105,28 +68,9 @@
   </div>
 
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-<<<<<<< HEAD
   <script src="/public/js/mapa.js"></script>
   <script src="/public/js/telas.js"></script>
   <script src="/public/script.js"></script>
 </body>
 
-=======
-  <script src="../js/mapa.js"></script>
-  <script src="../js/telas.js"></script>
-  <script src="../script.js"></script>
-  <!-- Auto ajuste de altura do textarea -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const textarea = document.getElementById("denuncia");
-      textarea.addEventListener("input", () => {
-        textarea.style.height = "auto";
-        textarea.style.height = textarea.scrollHeight + "px";
-      });
-    });
-  </script>
-</body>
-
-
->>>>>>> b4a6e34818d3a81794099a2c4467e96fe73247b2
 </html>
