@@ -109,34 +109,47 @@ body {
     gap: 15px;
 }
 
+/* Inputs e Textarea */
 input, textarea {
     padding: 12px;
     border-radius: 10px;
     border: 2px solid #aaa;
     font-size: 1rem;
+    font-family: Arial, sans-serif;
+    resize: none;
+    overflow-y: hidden;
+    box-sizing: border-box;
+}
+
+/* Auto expand textarea */
+textarea {
+    min-height: 80px;
 }
 
 /* Mapa */
 #map {
-    height: 300px;
-    width: 100%;
-    border-radius: 12px;
+  width: 100%;
+  max-height: 300px;
+  height: auto;
+  border-radius: 12px;
 }
 
 /* títulos das telas */
 #telaMapa h2,
 #telaDenuncia h2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: auto;
   text-align: center;
   font-family: 'Arial Black', Arial, sans-serif;
   font-size: 2rem;
   margin-bottom: 20px;
-
   background: linear-gradient(135deg, #26cc63, #2ab4da, #28c09e);
   background-size: 300% 300%;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-
   animation: titulo-gradient 4s ease infinite;
 }
 
@@ -236,7 +249,7 @@ input, textarea {
   left: 0;
   width: 140px;
   height: 100%;
-  background: #176f5c;
+  background: #176f5ce1;
   color: white;
   padding: 10px 10px;
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
@@ -317,7 +330,7 @@ input, textarea {
   top: 10px;
   left: -50px;
   /* fora da tela inicialmente */
-  background: #176f5c;
+  background: #176f5ce1;
   color: white;
   border: none;
   font-size: 20px;
@@ -340,17 +353,27 @@ input, textarea {
 
 /* Conteúdo principal */
 section {
-  margin-left: 160px;
+  margin-left: 0;
+  transition: none;
   padding: 40px;
-  transition: margin-left 0.3s ease;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: calc(100vh - 100px);
 }
 
-section.expanded {
-  margin-left: 20px;
+.main-content {
+  background: #ffffffcc;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 600px;
+  text-align: center;
+}
+
+.main-content p {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.6;
 }
 
 .main-content {

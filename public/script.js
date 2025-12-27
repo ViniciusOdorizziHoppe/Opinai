@@ -8,7 +8,7 @@ async function salvarTodo(event) {
   const senha = document.getElementById("senha").value;
 
   try {
-    const response = await fetch("/cadastro", {
+    const response = await fetch("/html/cadastro", {
       method: "POST",
       headers: {
         "Content-Type": "application/json; charset=UTF-8",
@@ -75,7 +75,13 @@ function criarDenuncia() {
   alert("Denúncia registrada!");
   encaminhar2();
 }
+<<<<<<< HEAD
 
+=======
+function encaminhar2() {
+  window.location.href = "/html/inicio.html";
+}
+>>>>>>> b4a6e34818d3a81794099a2c4467e96fe73247b2
 function mostrarDenuncias() {
   let container = document.getElementById("listaDenuncias");
   if (!container) return;
@@ -92,9 +98,18 @@ function mostrarDenuncias() {
   });
 }
 
+<<<<<<< HEAD
 // ==========================
 // DOM Ready
 // ==========================
+=======
+// redirecionamento genérico
+function encaminhar() {
+  window.location.href = "/html/inicio.html";
+}
+
+// Sidebar
+>>>>>>> b4a6e34818d3a81794099a2c4467e96fe73247b2
 document.addEventListener("DOMContentLoaded", () => {
   mostrarDenuncias();
 
@@ -175,9 +190,67 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
+<<<<<<< HEAD
 // ==========================
 // Splash screen
 // ==========================
+=======
+    closeBtn.addEventListener('click', () => {
+      sidebar.classList.add('closed');
+      mainSection?.classList.add('expanded');
+      setTimeout(() => openBtn.classList.add('visible'), 300);
+    });
+    openBtn.addEventListener('click', () => {
+      sidebar.classList.remove('closed');
+      mainSection?.classList.remove('expanded');
+      openBtn.classList.remove('visible');
+    });
+
+// Câmera
+const video = document.getElementById("video");
+const btnAbrir = document.getElementById("btnAbrirCamera");
+const btnFoto = document.getElementById("btnFoto");
+const preview = document.getElementById("preview");
+const canvas = document.createElement("canvas");
+let stream = null;
+
+async function startCamera() {
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({ video: true });
+    video.srcObject = stream;
+    video.style.display = "block";
+    btnFoto.style.display = "inline-block";
+    btnAbrir.style.display = "none";
+    preview.innerHTML = "";
+  } catch (err) {
+    alert("Erro ao acessar a câmera: " + err.message);
+  }
+}
+
+function stopCamera() {
+  if (stream) {
+    stream.getTracks().forEach(track => track.stop());
+    stream = null;
+  }
+  video.srcObject = null;
+  video.style.display = "none";
+  btnFoto.style.display = "none";
+  btnAbrir.style.display = "inline-block";
+  btnAbrir.textContent = "Tirar novamente?";
+}
+
+btnFoto.addEventListener("click", () => {
+  const ctx = canvas.getContext("2d");
+  canvas.width = video.videoWidth;
+  canvas.height = video.videoHeight;
+  ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+  const dataUrl = canvas.toDataURL("image/png");
+  preview.innerHTML = `<div class="photo-frame"><img src="${dataUrl}" alt="Preview da foto"></div>`;
+
+  stopCamera();
+});
+>>>>>>> b4a6e34818d3a81794099a2c4467e96fe73247b2
 window.addEventListener("load", () => {
   const splash = document.getElementById("splash");
   const app = document.getElementById("app");

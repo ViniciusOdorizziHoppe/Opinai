@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+<<<<<<< HEAD
 <head>
   <link rel="manifest" href="/public/manifest.json">
   <meta charset="UTF-8">
@@ -57,3 +58,53 @@
   <script src="/public/script.js" defer></script>
 </body>
 </html>
+=======
+
+<head>
+  <link rel="manifest" href="manifest.json">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/cadastro.css">
+  <link rel="icon" href="../assets/iconOpinai.png" type="image/png">
+  <title>Cadastro - Opinaí</title>
+</head>
+<body>
+  <!-- Header --> 
+  <header class="header">
+    <img src="../assets/opinaiLogo.png" alt="Logo Opinai">
+    <div>
+      <h1>Opinaí</h1>
+      <h2>Comunidade mais próxima de você</h2>
+    </div>
+  </header>
+
+
+  <div class="form-wrapper">
+ <form onsubmit="salvarTodo(event)">
+      <div class="form-content">
+        <p>Faça seu cadastro!</p>
+
+        <div>
+          <label for="nome">Email próprio:</label>
+          <input type="email" name="email" id="email" placeholder="JohnDoe2009@gmail.com" required>
+        </div>
+
+        <div>
+          <label for="email">Senha:</label>
+          <input type="password" name="senha" id="senha" placeholder="12345678" required>
+        </div>
+      </div>
+
+      <button type="submit">Cadastrar</button>
+
+    </form>
+
+    <!-- Botão de ajuda -->
+    <a href="../html/ajudaCadastro.html" class="help-btn">Ajuda ?</a>
+  </div>
+
+  <script src="../script.js"></script>
+</body>
+
+</html>
+>>>>>>> b4a6e34818d3a81794099a2c4467e96fe73247b2
