@@ -163,15 +163,15 @@ body {
 .ajuda-cards {
     display: flex;
     justify-content: center;
-    gap: 24px;
+    gap: 10px;
     margin-top: 20px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
 
 .card {
     background: #ffffff;
-    width: 200px;
-    padding: 24px;
+    width: 170px;
+    padding: 20px;
     border-radius: 18px;
     text-align: center;
     cursor: pointer;
@@ -189,9 +189,9 @@ body {
 /* Imagem dos cards */
 
 .card-img {
-    width: 72px;
-    height: 72px;
-    margin: 0 auto 14px auto;
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 10px auto;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -205,16 +205,23 @@ body {
     background: transparent;
 }
 
+/* Texto do card */
+
+.card h3 {
+    font-size: 15px;
+    white-space: nowrap;
+}
+
 /* Seta abaixo do card */
 
 .card-arrow {
     position: absolute;
-    bottom: -18px;
+    bottom: -16px;
     left: 50%;
     transform: translateX(-50%) scale(0);
-    border-left: 16px solid transparent;
-    border-right: 16px solid transparent;
-    border-top: 16px solid #f0f0f0;
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    border-top: 14px solid #f0f0f0;
     filter: drop-shadow(0 12px 22px rgba(0,0,0,0.22));
     transition: transform 0.25s;
 }
@@ -240,7 +247,7 @@ body {
 .faq-item {
     background: #ffffff;
     border-radius: 18px;
-    padding: 18px;
+    padding: 18px 56px 18px 18px;
     margin-bottom: 14px;
     position: relative;
     box-shadow: 0 4px 14px rgba(0,0,0,0.06);
@@ -253,7 +260,6 @@ body {
 
 .faq-item h3 {
     margin: 0;
-    padding-right: 56px;
     font-size: 16px;
 }
 
@@ -261,10 +267,11 @@ body {
 
 .faq-toggle {
     position: absolute;
-    right: 16px;
-    top: 16px;
-    width: 36px;
-    height: 36px;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 38px;
+    height: 38px;
     border-radius: 50%;
     border: none;
     cursor: pointer;
@@ -284,7 +291,7 @@ body {
 
 .faq-item.open .faq-toggle {
     background: #dddddd;
-    transform: rotate(180deg);
+    transform: translateY(-50%) rotate(180deg);
 }
 
 /* Resposta */
@@ -304,19 +311,24 @@ body {
 @media (max-width: 600px) {
 
     .ajuda-cards {
-        gap: 14px;
+        gap: 12px;
+        justify-content: space-between;
     }
 
     .card {
-        width: 155px;
-        padding: 18px;
+        width: 115px;
+        padding: 14px;
         border-radius: 16px;
     }
 
     .card-img {
-        width: 52px;
-        height: 52px;
-        margin-bottom: 10px;
+        width: 44px;
+        height: 44px;
+        margin-bottom: 8px;
+    }
+
+    .card h3 {
+        font-size: 14px;
     }
 
     .faq-group {
@@ -326,15 +338,10 @@ body {
     }
 
     .faq-item {
-        padding: 16px;
+        padding: 16px 54px 16px 16px;
     }
 
     .faq-item h3 {
         font-size: 15px;
-    }
-
-    .faq-toggle {
-        width: 36px;
-        height: 36px;
     }
 }
