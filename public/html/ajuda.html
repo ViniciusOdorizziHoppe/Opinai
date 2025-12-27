@@ -33,115 +33,103 @@
         </div>
     </header>
 
-    <!-- Conteúdo principal -->
-    <section id="mainSection">
-        <div class="content-box">
+    <main class="ajuda-container">
 
-            <div class="accordion">
-                <button class="accordion-btn">Ajuda no Login</button>
-                <div class="accordion-content">
-                    <p>
-                        Se você está tendo dificuldades para acessar sua conta, verifique se seu e-mail e senha estão
-                        corretos. Certifique-se de que seu navegador está atualizado e que não há bloqueadores que impeçam
-                        o funcionamento do site. Caso o problema persista, entre em contato com nosso suporte técnico.
-                    </p>
-                </div>
-            </div>
-
-            <div class="accordion">
-                <button class="accordion-btn">Como Fazer uma Denúncia</button>
-                <div class="accordion-content">
-                    <p>
-                        Para registrar uma denúncia, clique em "Fazer Denúncia" na barra lateral. Preencha todos os campos
-                        obrigatórios com informações claras e, se possível, anexe fotos. Após enviar, sua denúncia será
-                        analisada pela equipe do Opinaí.
-                    </p>
-                </div>
-            </div>
-
-            <div class="accordion">
-                <button class="accordion-btn">O que Deve Ser Denunciado</button>
-                <div class="accordion-content">
-                    <p>
-                        Denuncie apenas situações reais de irregularidade, como crimes, abusos, fraudes, negligência ou
-                        problemas em serviços públicos. Evite denúncias falsas ou sem informações suficientes.
-                    </p>
-                </div>
-            </div>
-
-            <div class="accordion">
-                <button class="accordion-btn">Ver Denúncias Publicadas</button>
-                <div class="accordion-content">
-                    <p>
-                        Na seção "Ver Denúncias", você pode acompanhar todas as denúncias já publicadas e utilizar filtros
-                        para encontrar os casos desejados. O anonimato dos denunciantes é garantido.
-                    </p>
-                </div>
-            </div>
-
-            <div class="accordion">
-                <button class="accordion-btn">Suporte Técnico</button>
-                <div class="accordion-content">
-                    <p>
-                        Caso enfrente problemas técnicos, envie um e-mail para
-                        <strong>depoisNosVemosEmail@gmail.com</strong>. Nossa equipe está pronta para ajudar.
-                    </p>
-                </div>
-            </div>
-
-            <div class="accordion">
-                <button class="accordion-btn">Privacidade e Segurança</button>
-                <div class="accordion-content">
-                    <p>
-                        Todos os dados enviados ao Opinaí são protegidos. Você pode optar por enviar denúncias anônimas,
-                        garantindo que sua identidade não seja revelada.
-                    </p>
-                </div>
-            </div>
-
-            <div class="accordion">
-                <button class="accordion-btn">Perguntas Frequentes (FAQ)</button>
-                <div class="accordion-content">
-                    <ul>
-                        <li>Como me cadastrar corretamente?</li>
-                        <li>Posso enviar denúncias anônimas?</li>
-                        <li>Como posso entrar em contato com o suporte?</li>
-                        <li>Quais tipos de denúncias são aceitas?</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="accordion">
-                <button class="accordion-btn">Contato</button>
-                <div class="accordion-content">
-                    <p>
-                        Para dúvidas ou sugestões, entre em contato pelo e-mail
-                        <strong>depoisNosVemosEmail@gmail.com</strong>.
-                    </p>
-                </div>
-            </div>
-
+        <div class="ajuda-cards">
+            <div class="card active" data-target="login">
+                <div class="card-img">
+                    <img src="../assets/login.png" alt="Login">
+                </div>     
+            <span>Login</span>
+            <div class="card-arrow"></div>
         </div>
-    </section>
+
+        <div class="card" data-target="denuncias">
+            <div class="card-img">
+                <img src="../assets/denuncia.png" alt="Denuncia">
+            </div>
+            <span>Denúncias</span>
+            <div class="card-arrow"></div>
+        </div>
+
+        <div class="card" data-target="suporte">
+            <div class="card-img">
+                <img src="../assets/suporte.png" alt="Suporte">
+            </div>
+            <span>Suporte</span>
+            <div class="card-arrow"></div>
+        </div>
+        </div>
+
+        <!-- LOGIN -->
+        <section class="faq-group active" id="login">
+            <div class="faq-item">
+                <h3>Como se cadastrar</h3>
+                <button class="faq-toggle"></button>
+                <div class="faq-answer">Crie sua conta pela tela inicial.</div>
+            </div>
+
+            <div class="faq-item">
+                <h3>Como alterar sua senha</h3>
+                <button class="faq-toggle"></button>
+                <div class="faq-answer">Vá até o perfil e selecione “Alterar senha”.</div>
+            </div>
+
+            <div class="faq-item">
+                <h3>É possível alterar minhas informações pessoais?</h3>
+                <button class="faq-toggle"></button>
+                <div class="faq-answer">Sim, pelo menu de perfil.</div>
+            </div>
+        </section>
+
+        <!-- DENÚNCIAS -->
+        <section class="faq-group" id="denuncias">
+            <div class="faq-item">
+                <h3>Como fazer uma denúncia</h3>
+                <button class="faq-toggle"></button>
+                <div class="faq-answer">Preencha o formulário na aba Denúncias.</div>
+            </div>
+
+            <div class="faq-item">
+                <h3>Como ver uma denúncia feita por você</h3>
+                <button class="faq-toggle"></button>
+                <div class="faq-answer">Use a opção “Ver Denúncias”.</div>
+            </div>
+
+            <div class="faq-item">
+                <h3>Que tipos de denúncias são aceitas</h3>
+                <button class="faq-toggle"></button>
+                <div class="faq-answer">Problemas urbanos e sociais.</div>
+            </div>
+        </section>
+
+        <!-- SUPORTE -->
+        <section class="faq-group" id="suporte">
+            <div class="faq-item">
+                <h3>Como entrar em contato</h3>
+                <button class="faq-toggle"></button>
+                <div class="faq-answer">Use o formulário de suporte.</div>
+            </div>
+
+            <div class="faq-item">
+                <h3>Horário de atendimento</h3>
+                <button class="faq-toggle"></button>
+                <div class="faq-answer">Segunda a sexta, 8h às 18h.</div>
+            </div>
+
+            <div class="faq-item">
+                <h3>Problemas técnicos</h3>
+                <button class="faq-toggle"></button>
+                <div class="faq-answer">Reporte diretamente pelo app.</div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="../js/telas.js"></script>
+
 
     <script src="../script.js"></script>
-    <script>
-        // Accordion toggle
-        const accordions = document.querySelectorAll('.accordion-btn');
-        accordions.forEach(btn => {
-            const content = btn.nextElementSibling;
-            content.style.maxHeight = null;
-            btn.addEventListener('click', () => {
-                if (content.style.maxHeight) {
-                    content.style.maxHeight = null;
-                } else {
-                    document.querySelectorAll('.accordion-content')
-                        .forEach(c => c.style.maxHeight = null);
-                    content.style.maxHeight = content.scrollHeight + "px";
-                }
-            });
-        });
-    </script>
 </body>
 
 </html>
