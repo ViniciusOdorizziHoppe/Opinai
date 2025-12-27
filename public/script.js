@@ -1,3 +1,6 @@
+// ==========================
+// CADASTRO
+// ==========================
 async function salvarTodo(event) {
   event.preventDefault();
 
@@ -10,44 +13,37 @@ async function salvarTodo(event) {
       headers: {
         "Content-Type": "application/json; charset=UTF-8",
       },
-      body: JSON.stringify({ email, senha })
+      body: JSON.stringify({ email, senha }),
     });
 
     const data = await response.json();
 
     if (data.success) {
-      alert(data.message);
+      alert(data.message || "Cadastro realizado!");
       encaminhar();
     } else {
-      alert("Erro ao cadastrar!");
+      alert(data.message || "Erro ao cadastrar!");
     }
-
   } catch (error) {
     console.error("Fetch error:", error);
     alert("Erro ao salvar, tente novamente!");
   }
 }
 
-// ==========================
-// Redirecionamento
-// ==========================
 function encaminhar() {
   window.location.href = "/html/inicio.html";
 }
 
-function encaminhar2() {
-  window.location.href = "/html/inicio.html";
-}
-
 // ==========================
-// Denúncias
+// DENÚNCIAS (localStorage)
 // ==========================
 let denuncias = JSON.parse(localStorage.getItem("denuncias")) || [];
 
 function criarDenuncia() {
-  let titulo = document.getElementById("tituloDenuncia")?.value.trim();
-  let descricao = document.getElementById("denuncia")?.value.trim();
-  let imagem = document.getElementById("preview")?.querySelector("img")?.src || "";
+  const titulo = document.getElementById("tituloDenuncia")?.value.trim();
+  const descricao = document.getElementById("denuncia")?.value.trim();
+  const imagem =
+    document.getElementById("preview")?.querySelector("img")?.src || "";
 
   if (!titulo || !descricao) {
     alert("Preencha todos os campos!");
@@ -64,44 +60,49 @@ function criarDenuncia() {
     descricao,
     imagem,
     latitude: window.localSelecionado.lat,
-    longitude: window.localSelecionado.lng
+    longitude: window.localSelecionado.lng,
+    data: new Date().toLocaleString(),
   };
 
   denuncias.push(denuncia);
   localStorage.setItem("denuncias", JSON.stringify(denuncias));
+
   alert("Denúncia registrada!");
-  encaminhar2();
+  window.location.href = "/html/inicio.html";
 }
+
 function mostrarDenuncias() {
-  let container = document.getElementById("listaDenuncias");
+  const container = document.getElementById("listaDenuncias");
   if (!container) return;
 
   container.innerHTML = "";
-  denuncias.forEach(d => {
+
+  if (denuncias.length === 0) {
+    container.innerHTML = "<p>Nenhuma denúncia registrada.</p>";
+    return;
+  }
+
+  denuncias.forEach((d) => {
     container.innerHTML += `
       <div class="denuncia">
         <h3>${d.titulo}</h3>
-        <img src="${d.imagem}" alt="Imagem da denúncia" width="200">
+        ${d.imagem ? `<img src="${d.imagem}" alt="Imagem da denúncia">` : ""}
         <p>${d.descricao}</p>
+        <small>${d.data || ""}</small>
       </div>
     `;
   });
 }
 
 // ==========================
-// DOM Ready
+// DOM READY
 // ==========================
-
-// redirecionamento genérico
-function encaminhar() {
-  window.location.href = "/html/inicio.html";
-}
-
-// Sidebar
 document.addEventListener("DOMContentLoaded", () => {
   mostrarDenuncias();
 
-  // Sidebar
+  // ==========================
+  // SIDEBAR
+  // ==========================
   const sidebar = document.getElementById("sidebar");
   const closeBtn = document.getElementById("closeBtn");
   const openBtn = document.getElementById("openBtn");
@@ -122,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ==========================
-  // Câmera com troca frontal/traseira
+  // CÂMERA COM TROCA
   // ==========================
   const video = document.getElementById("video");
   const btnAbrir = document.getElementById("btnAbrirCamera");
@@ -133,18 +134,17 @@ document.addEventListener("DOMContentLoaded", () => {
   if (video && btnAbrir && btnFoto && preview) {
     const canvas = document.createElement("canvas");
     let stream = null;
-    let usarFrontal = true; // começa com frontal
+    let usarFrontal = true;
 
     async function startCamera() {
       try {
         if (stream) {
-          stream.getTracks().forEach(track => track.stop());
+          stream.getTracks().forEach((t) => t.stop());
         }
 
         stream = await navigator.mediaDevices.getUserMedia({
-          video: {
-            facingMode: usarFrontal ? "user" : "environment"
-          }
+          video: { facingMode: usarFrontal ? "user" : "environment" },
+          audio: false,
         });
 
         video.srcObject = stream;
@@ -153,7 +153,6 @@ document.addEventListener("DOMContentLoaded", () => {
         btnAbrir.style.display = "none";
         if (btnTrocar) btnTrocar.style.display = "inline-block";
         preview.innerHTML = "";
-
       } catch (err) {
         alert("Erro ao acessar a câmera: " + err.message);
       }
@@ -161,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function stopCamera() {
       if (stream) {
-        stream.getTracks().forEach(track => track.stop());
+        stream.getTracks().forEach((t) => t.stop());
         stream = null;
       }
       video.srcObject = null;
@@ -178,7 +177,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const ctx = canvas.getContext("2d");
       canvas.width = video.videoWidth;
       canvas.height = video.videoHeight;
-      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+      ctx.drawImage(video, 0, 0);
 
       const dataUrl = canvas.toDataURL("image/png");
       preview.innerHTML = `
@@ -200,63 +199,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ==========================
-// Splash screen
+// SPLASH SCREEN
 // ==========================
-    closeBtn.addEventListener('click', () => {
-      sidebar.classList.add('closed');
-      mainSection?.classList.add('expanded');
-      setTimeout(() => openBtn.classList.add('visible'), 300);
-    });
-    openBtn.addEventListener('click', () => {
-      sidebar.classList.remove('closed');
-      mainSection?.classList.remove('expanded');
-      openBtn.classList.remove('visible');
-    });
-
-// Câmera
-const video = document.getElementById("video");
-const btnAbrir = document.getElementById("btnAbrirCamera");
-const btnFoto = document.getElementById("btnFoto");
-const preview = document.getElementById("preview");
-const canvas = document.createElement("canvas");
-let stream = null;
-
-async function startCamera() {
-  try {
-    stream = await navigator.mediaDevices.getUserMedia({ video: true });
-    video.srcObject = stream;
-    video.style.display = "block";
-    btnFoto.style.display = "inline-block";
-    btnAbrir.style.display = "none";
-    preview.innerHTML = "";
-  } catch (err) {
-    alert("Erro ao acessar a câmera: " + err.message);
-  }
-}
-
-function stopCamera() {
-  if (stream) {
-    stream.getTracks().forEach(track => track.stop());
-    stream = null;
-  }
-  video.srcObject = null;
-  video.style.display = "none";
-  btnFoto.style.display = "none";
-  btnAbrir.style.display = "inline-block";
-  btnAbrir.textContent = "Tirar novamente?";
-}
-
-btnFoto.addEventListener("click", () => {
-  const ctx = canvas.getContext("2d");
-  canvas.width = video.videoWidth;
-  canvas.height = video.videoHeight;
-  ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-  const dataUrl = canvas.toDataURL("image/png");
-  preview.innerHTML = `<div class="photo-frame"><img src="${dataUrl}" alt="Preview da foto"></div>`;
-
-  stopCamera();
-});
 window.addEventListener("load", () => {
   const splash = document.getElementById("splash");
   const app = document.getElementById("app");
